@@ -1,0 +1,43 @@
+\documentclass[twoside]{book}
+\topmargin=-30pt
+\oddsidemargin=-20pt
+\evensidemargin=-20pt
+\textwidth=17cm
+\textheight=25cm
+
+\usepackage{czech,amsmath,amsfonts,graphics}
+%\usepackage{pspicture,picins}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\arccotg}{arccotg}
+\DeclareMathOperator{\hod}{hod}
+\DeclareMathOperator{\sgn}{sgn}
+\makeindex
+\begin{document}
+
+\pagestyle{empty}
+
+\def\dr #1{\par\noindent $\bullet$ {\bf #1}}
+
+
+
+\dr{two-sample F-test}
+\par $X_{1},\dots,X_{m}\sim N(\mu_1,\sigma_1^2)$,  $Y_{1},\dots,Y_{n}\sim N(\mu_2,\sigma_2^2)$ nezávislé
+
+$$ \qquad   Z=\frac{S_{X}^2}{S_{Y}^2}\sim F_{m-1,n-1}     $$
+\vspace*{1mm}
+\par\noindent - two-tail test on level $\alpha$
+\vspace*{3mm}
+\par $H_0$:  $\sigma_1=\sigma_2 $ rejected $\quad\Longleftrightarrow\quad$
+ $ Z\leq F_{m-1,n-1}(\frac{\alpha}2)$ or $Z \geq  F_{m-1,n-1}(1-\frac{\alpha}2)$
+\vspace*{5mm}
+
+
+
+
+
+\end{document}
+
+
+

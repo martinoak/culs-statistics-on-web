@@ -1,0 +1,34 @@
+\documentclass[twoside]{book}
+\topmargin=-30pt
+\oddsidemargin=-20pt
+\evensidemargin=-20pt
+\textwidth=17cm
+\textheight=25cm
+
+\usepackage{czech,amsmath,amsfonts,graphics}
+%\usepackage{pspicture,picins}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\arccotg}{arccotg}
+\DeclareMathOperator{\hod}{hod}
+\DeclareMathOperator{\sgn}{sgn}
+\makeindex
+\begin{document}
+
+\pagestyle{empty}
+
+\def\dr #1{\par\noindent $\bullet$ {\bf #1}}
+
+\dr{Wilcoxon two-sample test}
+\vspace*{2mm}
+\newline $X_1,\dots,X_m$ independent with the same distribution, $Y_1,\dots,Y_n$ independent with the same distribution, independent samples
+\newline $H_0:$ $X_k$ and $Y_k$ have the same distribution
+\newline
+postup:
+\newline - we associate the corresponding orders with values $X_1,\dots, X_m, Y_1,\dots,Y_n$ 
+\newline - $T_1=$ sum of orders of $X_k$, $T_2=$ sum of orders of  $Y_k$,
+\newline - $ U_1=mn+\frac12m(m+1) -T_1 \quad  U_2=mn+\frac12n(n+1) -T_2 $
+\newline $H_0$  rejected $\quad \Longleftrightarrow \quad \min(U_1,U_2) \geq k$
+
+\end{document} 

@@ -1,0 +1,41 @@
+\documentclass[twoside]{book}
+\topmargin=-30pt
+\oddsidemargin=-20pt
+\evensidemargin=-20pt
+\textwidth=17cm
+\textheight=25cm
+
+\usepackage{czech,amsmath,amsfonts,graphics}
+%\usepackage{pspicture,picins}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\arccotg}{arccotg}
+\DeclareMathOperator{\hod}{hod}
+\DeclareMathOperator{\sgn}{sgn}
+\makeindex
+\begin{document}
+
+\pagestyle{empty}
+
+\def\dr #1{\par\noindent $\bullet$ {\bf #1}}
+
+\dr{Kruskalùv - Walisùv test} (jednoduché tøídìní)
+\vspace*{2mm}
+\begin{multline*}\begin{matrix}
+X_{1,1},\dots,X_{1,n_1} \text{ nezávislé, stejné rozdìlení } \\
+X_{2,1},\dots,X_{2,n_2} \text{ nezávislé, stejné rozdìlení } \\
+\hdotsfor{1}  \\
+X_{I,1},\dots,X_{I,n_{I}} \text{ nezávislé, stejné rozdìlení }
+\end{matrix}  \end{multline*}
+\hspace*{80mm} výbìry nezávislé, $n_1+\dots+n_{I}=n$
+\newline $H_0$:  všechna rozdìlení jsou stejná
+\newline
+postup:
+\newline - hodnotám $X_{11},\dots, X_{1n_1}, \dots, X_{I1},\dots, X_{In_I} $ pøiøadíme poøadí
+\newline - $T_1=$ souèet poøadí $X_{1k}$, $T_2=$ souèet poøadí  $X_{2k}$,...,$T_I=$ souèet poøadí  $X_{Ik}$
+\newline - $\displaystyle{ Q=\frac{12}{n(n+1)} \sum_k \frac{T^2_k}{n_k} -3(n+1)\approx \chi^2_{I-1}}$
+\newline $H_0$  zamítneme $\quad \Longleftrightarrow\quad |Q| \geq k$
+\newline \phantom{$H_0$  zamítneme $\quad \Longleftrightarrow$} $\quad |Q| \geq \chi^2_{I-1}(1-\alpha)$
+\end{document}
+

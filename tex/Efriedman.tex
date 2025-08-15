@@ -1,0 +1,44 @@
+\documentclass[twoside]{book}
+\topmargin=-30pt
+\oddsidemargin=-20pt
+\evensidemargin=-20pt
+\textwidth=17cm
+\textheight=25cm
+
+\usepackage{czech,amsmath,amsfonts,graphics}
+%\usepackage{pspicture,picins}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\arccotg}{arccotg}
+\DeclareMathOperator{\hod}{hod}
+\DeclareMathOperator{\sgn}{sgn}
+\makeindex
+\begin{document}
+
+\pagestyle{empty}
+
+\def\dr #1{\par\noindent $\bullet$ {\bf #1}}
+
+
+\dr{Friedmann test}
+\begin{multline*}\begin{array}{l}
+X_{1,1},\dots,X_{1,J}  \\
+X_{2,1},\dots,X_{2,J}   \\
+\hdotsfor{1}  \\
+X_{I,1},\dots,X_{I,J}
+\end{array}   \end{multline*}
+\hspace*{80mm} independent
+\newline $H_0$: $X_{1l}, X_{2l}, \dots, X_{Il}$ have the same distribution
+\newline
+process:
+\newline - in each block (row) we asociate order $R_{k,1}, \dots R_{k,J}$ with corresponding values $X_{k,1},\dots, X_{k,J} $
+\newline - $ Q=\frac{12}{JI(I+1)} \sum_{l=1}^{I} \left(\sum_{k=1}^{J} R_{kl}\right)^2  -3J(I+1)\approx \chi^2_{I-1}$
+\newline $H_0$  rejected $\quad \Longleftrightarrow\quad |Q| \geq k$
+\newline \phantom{$H_0$  rejected $\quad \Longleftrightarrow$} $\quad |Q| \geq \chi^2_{I-1}(1-\alpha)$
+
+
+
+\end{document}
+
+

@@ -1,0 +1,44 @@
+\documentclass[twoside]{book}
+\topmargin=-30pt
+\oddsidemargin=-20pt
+\evensidemargin=-20pt
+\textwidth=17cm
+\textheight=25cm
+
+\usepackage{czech,amsmath,amsfonts,graphics}
+%\usepackage{pspicture,picins}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\arccotg}{arccotg}
+\DeclareMathOperator{\hod}{hod}
+\DeclareMathOperator{\sgn}{sgn}
+\makeindex
+\begin{document}
+
+\pagestyle{empty}
+
+\def\dr #1{\par\noindent $\bullet$ {\bf #1}}
+
+
+
+\dr{dvouvýbìrový t-test}
+\vspace*{2mm}
+\par $X_{1},\dots,X_{m}\sim N(\mu_1,\sigma_1^2)$,  $Y_{1},\dots,Y_{n}\sim N(\mu_2,\sigma_2^2)$ nezávislé
+\par pro $\sigma_1=\sigma_2=\sigma $
+$$ \qquad
+   T=\frac{\bar{X}-\bar{Y}}{S \sqrt{\frac1{m}+\frac1{n}}}\sim t_{m+n-2} \qquad
+   S^2 =\frac1{m+n-2}\left( (m-1) S_{X}^2 + (n-1) S_{Y}^2 \right)    \qquad
+     $$
+\vspace*{1mm}
+\par\noindent - oboustranný test na hladinì $\alpha$
+\vspace*{3mm}
+\par $H_0$:  $\mu_1=\mu_2 $ zamítneme $\quad\Longleftrightarrow\quad$
+ $|T|\geq t_{m+n-1}(1-\frac{\alpha}2)$
+
+
+
+\end{document}
+
+
+

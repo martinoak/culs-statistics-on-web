@@ -1,0 +1,43 @@
+\documentclass[twoside]{book}
+\topmargin=-30pt
+\oddsidemargin=-20pt
+\evensidemargin=-20pt
+\textwidth=17cm
+\textheight=25cm
+
+\usepackage{czech,amsmath,amsfonts,graphics}
+%\usepackage{pspicture,picins}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\arccotg}{arccotg}
+\DeclareMathOperator{\hod}{hod}
+\DeclareMathOperator{\sgn}{sgn}
+\makeindex
+\begin{document}
+
+\pagestyle{empty}
+
+\def\dr #1{\par\noindent $\bullet$ {\bf #1}}
+
+
+
+\dr{one-sample t-test}
+\vspace*{2mm}
+\par $X_{1},\dots,X_{n}\sim N(\mu,\sigma^2)$ independent
+$$\bar{X}=\frac1{n}\left(X_1 + \dots + X_{n}\right) \qquad S_{X}^2=\frac1{n-1}\left((X_1-\bar{X})^2 + \dots + (X_{n}-\bar{X})^2\right)$$
+$\sum_{k}(X_{k}-\bar{X})^2=   \sum_{k}X_{k}^2- n\cdot \bar{X}^2    $
+$$ \qquad T=\frac{\bar{X}-\mu}{\sqrt{\frac{S_{X}^2}{n}}}\sim t_{n-1}\qquad     $$
+\par\noindent - two-tailed test for $\mu$ on level $\alpha$
+\vspace*{3mm}
+\par $H_0$:  $\mu=a$ rejected $\quad\Longleftrightarrow\quad$
+     $|T|\geq t_{n-1}(1-\frac{\alpha}2)$
+\vspace*{5mm}
+\par\noindent - two-tailed 95\% confident interval for $\mu$
+  $$\left(\bar{X}-\frac{S_{X}}{\sqrt{n}}\cdot t_{n-1}(0,975);\bar{X}+\frac{S_{X}}{\sqrt{n}}\cdot t_{n-1}(0,975) \right)$$
+
+
+
+\end{document}
+
+

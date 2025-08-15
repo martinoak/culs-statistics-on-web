@@ -1,0 +1,41 @@
+\documentclass[twoside]{book}
+\topmargin=-30pt
+\oddsidemargin=-20pt
+\evensidemargin=-20pt
+\textwidth=17cm
+\textheight=25cm
+
+\usepackage{czech,amsmath,amsfonts,graphics}
+%\usepackage{pspicture,picins}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\arccotg}{arccotg}
+\DeclareMathOperator{\hod}{hod}
+\DeclareMathOperator{\sgn}{sgn}
+\makeindex
+\begin{document}
+
+\pagestyle{empty}
+
+\def\dr #1{\par\noindent $\bullet$ {\bf #1}}
+
+
+
+\dr{paired t-test}
+\vspace*{2mm}
+\par $(X_{1},Y_{1}),\dots,(X_{n},Y_{n})\sim N(\boldsymbol\mu,\boldsymbol\Sigma)$ independent, $\boldsymbol\mu=(\mu_1,\mu_2)$
+\vspace*{2mm}
+\par for $Z_{1}=X_{1}-Y_{1},\dots,Z_{n}=X_{n}-Y_{n}\sim N(\mu_1-\mu_2,\sigma^2)$ we use two-tailed one-sample t-test
+$$\bar{Z}=\frac1{n}\left(Z_1 + \dots + Z_{n}\right) \qquad S_{Z}^2=\frac1{n-1}\left((Z_1-\bar{Z})^2 + \dots + (Z_{n}-\bar{Z})^2\right)$$
+$\sum_{k}(Z_{k}-\bar{Z})^2=   \sum_{k}(Z_{k}-(\mu_1-\mu_2))^2- n\cdot (\bar{Z}-(\mu_1-\mu_2))^2    $
+$$ \qquad T=\frac{\bar{Z}-(\mu_1-\mu_2)}{\sqrt{\frac{S_{Z}^2}{n}}}\sim t_{n-1}\qquad     $$
+\par\noindent - two-tailed test for $\mu_1=\mu_2$ on level $\alpha$
+\vspace*{3mm}
+\par $H_0$:  $\mu_1=\mu_2$ rejected $\quad\Longleftrightarrow\quad$
+     $|T|\geq t_{n-1}(1-\frac{\alpha}2)$
+
+
+\end{document}
+
+

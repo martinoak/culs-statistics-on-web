@@ -1,0 +1,38 @@
+\documentclass[twoside]{book}
+\topmargin=-30pt
+\oddsidemargin=-20pt
+\evensidemargin=-20pt
+\textwidth=17cm
+\textheight=25cm
+
+\usepackage{czech,amsmath,amsfonts,graphics}
+%\usepackage{pspicture,picins}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\arccotg}{arccotg}
+\DeclareMathOperator{\hod}{hod}
+\DeclareMathOperator{\sgn}{sgn}
+\makeindex
+\begin{document}
+
+\pagestyle{empty}
+
+\def\dr #1{\par\noindent $\bullet$ {\bf #1}}
+
+
+\dr{Wilcoxonùv jednovýbìrový test}
+\vspace*{2mm}
+\newline $X_1,\dots,X_n$ nezávislé, stejné rozdìlení
+\newline $H_0:$ rozdìlení je symetrické kolem $a$ ($F(a-x)+F(a+x)=1$)
+\newline
+postup:
+\newline - hodnotám $|X_1-a|,\dots, |X_n-a|$ pøiøadíme poøadí
+\newline - $S^{+}=$ souèet poøadí kladných $X_k-a$, $S^{-}=$ souèet poøadí záporných $X_k-a$
+\newline $H_0$:  zamítneme $\quad\Longleftrightarrow\quad \min(S^{+},S^{-}) \geq k$
+
+
+
+\end{document}
+
+

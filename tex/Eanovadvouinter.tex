@@ -1,0 +1,61 @@
+\documentclass[twoside]{book}
+\topmargin=-30pt
+\oddsidemargin=-20pt
+\evensidemargin=-20pt
+\textwidth=17cm
+\textheight=25cm
+
+\usepackage{czech,amsmath,amsfonts,graphics}
+%\usepackage{pspicture,picins}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\arccotg}{arccotg}
+\DeclareMathOperator{\hod}{hod}
+\DeclareMathOperator{\sgn}{sgn}
+\makeindex
+\begin{document}
+
+\pagestyle{empty}
+
+\def\dr #1{\par\noindent $\bullet$ {\bf #1}}
+
+\dr{two-way ANOVA with interaction}
+\hspace*{+3mm}
+\begin{multline*}\begin{matrix}
+X_{1,1,1},\dots,X_{1,1,p}\sim N(\mu_{1,1},\sigma^2) \text{ indep.} & X_{1,2,1},\dots,X_{1,2,p}\sim N(\mu_{1,2},\sigma^2) \text{ indep.} &\dots & X_{1,J,1},\dots,X_{1,J,p}\sim N(\mu_{1,J},\sigma^2) \text{ indep.} \\
+X_{2,1,1},\dots,X_{2,1,p}\sim N(\mu_{2,1},\sigma^2) \text{ indep.} & X_{2,2,1},\dots,X_{2,2,p}\sim N(\mu_{2,2},\sigma^2) \text{ indep.} &\dots & X_{2,J,1},\dots,X_{2,J,p}\sim N(\mu_{2,J},\sigma^2) \text{ indep.} \\
+\hdotsfor{4} \\
+X_{I,1,1},\dots,X_{I,1,p}\sim N(\mu_{I,1},\sigma^2) \text{ indep.} & X_{I,2,1},\dots,X_{I,2,p}\sim N(\mu_{I,2},\sigma^2) \text{ indep.} &\dots & X_{I,J,1},\dots,X_{I,J,p}\sim N(\mu_{I,J},\sigma^2) \text{ indep.}
+\end{matrix}\end{multline*}
+\hspace*{60mm} independent samples, $I\cdot J\cdot p =n$
+\newline (means)
+\begin{multline*}\begin{matrix}
+\bar{X}_{1,1}=\frac1{p}\sum_{k} X_{1,1,k} & \bar{X}_{1,2}=\frac1{p}\sum_{k} X_{1,2,k} & \dots & \bar{X}_{1,J}=\frac1{p}\sum_{k} X_{1,J,k}& \qquad \bar{X}^{A}_{1}=\frac1{p\cdot J}\sum_{kl} X_{1,k,l} \\
+\bar{X}_{2,1}=\frac1{p}\sum_{k} X_{2,1,k} & \bar{X}_{2,2}=\frac1{p}\sum_{k} X_{2,2,k} & \dots & \bar{X}_{2,J}=\frac1{p}\sum_{k} X_{2,J,k}& \qquad \bar{X}^{A}_{2}=\frac1{p\cdot J}\sum_{kl} X_{2,k,l} \\
+\hdotsfor{5} \\
+\bar{X}_{I,1}=\frac1{p}\sum_{k} X_{I,1,k} & \bar{X}_{I,2}=\frac1{p}\sum_{k} X_{I,2,k} & \dots & \bar{X}_{I,J}=\frac1{p}\sum_{k} X_{I,J,k}& \qquad \bar{X}^{A}_{I}=\frac1{p\cdot J}\sum_{kl} X_{I,k,l} \\
+\bar{X}^{B}_{1}=\frac1{p\cdot I}\sum_{k,l} X_{k,1,l} & \bar{X}^{B}_{2}=\frac1{p\cdot I}\sum_{k,l} X_{k,2,l} & \dots & \bar{X}^{B}_{J}=\frac1{p\cdot I}\sum_{k,l} X_{k,J,l} & \qquad \bar{X}=\frac1{n}\sum_{klm} X_{k,l,m} \\
+\end{matrix}\end{multline*}
+\newline \hspace*{5mm} $\mu_{k,l}=a+\alpha_{k}+\beta_{l}+\gamma_{k,l}\quad \sum_{k}\alpha_{k}=0 \quad \sum_{l}\beta_{l}=0\quad \sum_{k,l}\gamma_{k,l}=0$
+ \par $H_0$:   $\alpha_1=\alpha_2=\dots=\alpha_{I}=0$
+\par $H_0$:   $\beta_1=\beta_2=\dots=\beta_{I}=0$
+\par $H_0$:   $\gamma_{1,1}=\gamma_{1,2}=\dots=\gamma_{I,J}=0$
+\vspace*{3mm}\newline
+(sums of squares)
+$$\begin{array}{ll}
+S_{T}=\sum_{klm} (X_{k,l,m}-\bar{X})^2\quad & f_{T}=n-1 \\
+S_{A}=\sum_{k} (\bar{X}^{A}_{k}-\bar{X})^2\cdot J\cdot p\quad & f_{A}=I-1 \\
+S_{B}=\sum_{k} (\bar{X}^{B}_{k}-\bar{X})^2\cdot I\cdot p\quad & f_{A}=J-1 \\
+S_{e}=\sum_{klm} (X_{k,l,m}-\bar{X}_{k,l})^2\quad & f_{e}=n-I\cdot J \\
+S_{AB}=S_{T}-S_{A}-S_{B}-S_{e}\quad & f_{AB}=(I-1)(J-1)
+\end{array}   \qquad F_{A}=\frac{\frac{S_{A}}{f_{A}}}{\frac{S_{e}}{f_{e}}}\qquad F_{B}=\frac{\frac{S_{B}}{f_{B}}}{\frac{S_{e}}{f_{e}}}\qquad F_{AB}=\frac{\frac{S_{AB}}{f_{AB}}}{\frac{S_{e}}{f_{e}}}  \quad s^2=\frac{S_{e}}{f_{e}}$$
+\par $H_0$:  $\alpha_1=\dots = \alpha_I = 0$ rejected $\quad\Longleftrightarrow \quad$ $ F_{A}\geq F_{f_{A},f_{e}}(1-\alpha)$
+\par $H_0$:  $\beta_1=\dots = \beta_I = 0$ rejected $\quad\Longleftrightarrow \quad $ $F_{B}\geq F_{f_{B},f_{e}}(1-\alpha)$
+\par $H_0$:  $\gamma_{1,1}=\dots = \gamma_{I,J} = 0$ rejected $\quad\Longleftrightarrow \quad $ $ F_{AB}\geq F_{f_{AB},f_{e}}(1-\alpha)$
+
+
+
+\end{document}
+
+

@@ -1,0 +1,48 @@
+\documentclass[twoside]{book}
+\topmargin=-30pt
+\oddsidemargin=-20pt
+\evensidemargin=-20pt
+\textwidth=17cm
+\textheight=25cm
+
+\usepackage{czech,amsmath,amsfonts,graphics}
+%\usepackage{pspicture,picins}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\arccotg}{arccotg}
+\DeclareMathOperator{\hod}{hod}
+\DeclareMathOperator{\sgn}{sgn}
+\makeindex
+\begin{document}
+
+\pagestyle{empty}
+
+\def\dr #1{\par\noindent $\bullet$ {\bf #1}}
+
+
+\dr{one-way ANOVA}
+\begin{multline*}\begin{matrix}
+X_{1,1},\dots,X_{1,n_1}\sim N(\mu_1,\sigma^2) \text{ independent }\quad & \mu_1=a+\alpha_1 \\
+X_{2,1},\dots,X_{2,n_2}\sim N(\mu_2,\sigma^2) \text{ independent }\quad & \mu_2=a+\alpha_2 \\
+\hdotsfor{2}  \\
+X_{I,1},\dots,X_{I,n_{I}}\sim N(\mu_{I},\sigma^2) \text{ independent }\quad & \mu_{I}=a+\alpha_{I}
+\end{matrix}    \hfill \end{multline*}
+\hspace*{80mm} independent samples, $n_1+\dots+n_{I}=n$, $\alpha_1+\dots+\alpha_{I}=0$
+\par $H_0$:  $\mu_1=\mu_2 =\dots =\mu_{I}$ or $\alpha_1=\alpha_2=\dots=\alpha_{I}=0$
+\vspace*{3mm}\newline
+(means)
+$$  \bar{X}_{1}=\frac1{n_1}\sum_{k} X_{1,k}, \dots,\bar{X}_{I}=\frac1{n_{I}}\sum_{k} X_{I,k},\qquad \bar{X}=\frac1{n}\sum_{k,l} X_{k,l} $$
+(sums of squares)
+$$\begin{array}{ll}
+S_{T}=\sum_{k,l} (X_{k,l}-\bar{X})^2\quad & f_{T}=n-1 \\
+S_{A}=\sum_{k} (\bar{X}_{k}-\bar{X})^2\cdot n_{k}\quad & f_{A}=I-1 \\
+S_{e}=S_{T}-S_{A}=\sum_{k,l} (X_{k,l}-\bar{X}_{k})^2\quad & f_{e}=n-I
+\end{array}   \qquad F_{A}=\frac{\frac{S_{A}}{f_{A}}}{\frac{S_{e}}{f_{e}}}  \quad s^2=\frac{S_{e}}{f_{e}}$$
+\par $H_0$:  $\alpha_1=\dots = \alpha_I = 0$ rejected $\quad\Longleftrightarrow\quad$ $F_{A}\geq F_{f_{A},f_{e}}(1-\alpha)$
+\par\noindent\hspace*{5mm} (Sheffé method) classes {\it k}, {\it l} are different  $\quad\Longleftrightarrow\quad$ $ | \bar{X}_{k}- \bar{X}_{l}|>
+\sqrt{\left(\frac1{n_{k}}+\frac1{n_{l}}\right)(I-1) s^2  F_{f_{A},f_{e}}(1-\alpha)}$
+
+
+\end{document}
+

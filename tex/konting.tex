@@ -1,0 +1,70 @@
+\documentclass[twoside]{book}
+\topmargin=-30pt
+\oddsidemargin=-20pt
+\evensidemargin=-20pt
+\textwidth=17cm
+\textheight=25cm
+
+\usepackage{czech,amsmath,amsfonts,graphics}
+%\usepackage{pspicture,picins}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\arccotg}{arccotg}
+\DeclareMathOperator{\hod}{hod}
+\DeclareMathOperator{\sgn}{sgn}
+\makeindex
+\begin{document}
+
+\pagestyle{empty}
+
+\def\dr #1{\par\noindent $\bullet$ {\bf #1}}
+
+
+\dr{kontingenèní tabulky}
+\vspace*{2mm}
+\par $H_0$:  {\it X}, {\it Y} nezávislé
+\vspace*{2mm}
+\par
+\setlength{\unitlength}{1.5mm}
+\begin{minipage}{60mm}\begin{picture}(25,25)(0,0)
+\put(0,21){\makebox{{\it X}}}
+\put(2,23){\makebox{{\it Y}}}
+\put(7,22){\makebox{$1$}}
+\put(11,22){\makebox{$\dots$}}
+\put(17,22){\makebox{$s$}}
+\put(2,17){\makebox{$1$}}
+\put(7,17){\makebox{$n_{11}$}}
+\put(11,17){\makebox{$\dots$}}
+\put(16,17){\makebox{$n_{1s}$}}
+\put(22,17){\makebox{{$n_{1\cdot}$}}}
+\put(2,12){\makebox{$\vdots$}}
+\put(12,13){\makebox{$\dots$}}
+\put(22,12){\makebox{{$\vdots$}}}
+\put(2,7.5){\makebox{$r$}}
+\put(7,7.5){\makebox{$n_{r1}$}}
+\put(11,7.5){\makebox{$\dots$}}
+\put(16,7.5){\makebox{$n_{rs}$}}
+\put(22,7.5){\makebox{{$n_{r\cdot}$}}}
+\put(7,2.5){\makebox{$n_{\cdot 1}$}}
+\put(11,2.5){\makebox{$\dots$}}
+\put(16,2.5){\makebox{$n_{\cdot s}$}}
+\put(22,2.5){\makebox{{$n$}}}
+\put(0,5){\line(1,0){25}}
+\put(0,20){\line(1,0){25}}
+\put(5,0){\line(0,1){25}}
+\put(20,0){\line(0,1){25}}
+\put(5,20){\line(-1,1){5}}
+\end{picture}
+\end{minipage}
+\begin{minipage}{100mm}
+$\displaystyle{\chi^2=\sum_{kl}\frac{\left(n_{kl}- \frac{n_{k\cdot}\cdot n_{\cdot l}}{n}\right)^2}{ \frac{n_{k\cdot}\cdot n_{\cdot l}}{n} }=
+n\sum_{kl}\frac{n_{kl}^2}{n_{k\cdot}\cdot n_{\cdot l}}-n
+\approx \chi^2_{(r-1)(s-1)}}$
+\newline $H_0$ \hspace*{5mm}  zamítneme $\Longleftrightarrow$
+ $\chi^2\geq \chi^2_{(r-1)(s-1)}(1-\alpha)$
+\end{minipage}
+\vspace*{5mm}
+
+\end{document}
+

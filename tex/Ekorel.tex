@@ -1,0 +1,34 @@
+\documentclass[twoside]{book}
+\topmargin=-30pt
+\oddsidemargin=-20pt
+\evensidemargin=-20pt
+\textwidth=17cm
+\textheight=25cm
+
+\usepackage{czech,amsmath,amsfonts,graphics}
+%\usepackage{pspicture,picins}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\arccotg}{arccotg}
+\DeclareMathOperator{\hod}{hod}
+\DeclareMathOperator{\sgn}{sgn}
+\makeindex
+\begin{document}
+
+\pagestyle{empty}
+
+\def\dr #1{\par\noindent $\bullet$ {\bf #1}}
+
+\dr{(Pearson) correlation coefficient}
+\vspace*{2mm}
+\par $(X_{1},Y_{1}),\dots,(X_{n},Y_{n})\sim N(\boldsymbol\mu,\boldsymbol\Sigma)$ independent, $\boldsymbol\mu=(\mu_1,\mu_2)$,  $\boldsymbol\Sigma=\begin{pmatrix}\sigma_1^2 & \sigma_{12}\\ \sigma_{12} & \sigma_2^2\end{pmatrix}$,
+$\displaystyle{\rho=\frac{\sigma_{12}}{\sqrt{\sigma_1^2\sigma_2^2}}}$
+\vspace*{4mm}
+$$ S_{XY}=\frac1{n-1}\left((X_1-\bar{X})(Y_1-\bar{Y}) + \dots + (X_{n}-\bar{X})(Y_{n}-\bar{Y})\right)
+\qquad r=\frac{S_{XY}}{S_{X}\cdot S_{Y}}$$
+$$T=\frac{r}{\sqrt{\frac{1-r^2}{n-2}}}\sim t_{n-2}$$
+\vspace*{3mm}
+\par $H_0$:  $\rho=0$ rejected $\quad\Longleftrightarrow\quad$  $ |T|\geq t_{n-2}(1-\frac{\alpha}2)$
+\end{document}
+
