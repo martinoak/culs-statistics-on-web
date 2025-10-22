@@ -2,10 +2,10 @@
 <head>
 <?php
 
-$a = $_GET['a'];
-$in = $_GET['in'];
-$n = $_GET['n'];
-$x = $_GET['x'];
+$a = $_GET['a'] ?? null;
+$in = $_GET['in'] ?? null;
+$n = $_GET['n'] ?? null;
+$x = $_GET['x'] ?? null;
 
 function sum($xvar)
   {$s =0; $mez =count($xvar);
@@ -19,7 +19,7 @@ function sctv($xvar,$me)
 
 
 function invf($sv,$sw)
-  {$fis=FOpen("fis3.txt",r);
+  {$fis=FOpen("fis3.txt", "r");
   $stav=($sw-1)*151+($sv-1)*5;
   FSeek($fis,$stav);
   $inv=FRead($fis,4);
@@ -54,7 +54,7 @@ switch($a):
 case 0: ?>
     <form method=get>  hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd &nbsp;&nbsp; r: &nbsp;
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="ano">  &nbsp; (zadejte číslo od 3 do 10)
     <input type=hidden name=a value=1>
     </form>
@@ -66,7 +66,7 @@ case 1:
 if($in<3||$in>10||!(round($in)==$in)):    ?>  
     <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="ano">  &nbsp; (zadejte číslo od 3 do 10)
     <input type=hidden name=a value=1>
   </form>
@@ -74,11 +74,11 @@ if($in<3||$in>10||!(round($in)==$in)):    ?>
 else:?>
     <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="ano">  &nbsp; (zadejte číslo od 3 do 10)
     <br> rozsah jednotlivých tříd &nbsp;&nbsp; n<sub>1</sub>, ..., n<sub><?php echo($in);?></sub>:&nbsp;
     <?php for ($i =0; $i <$in; $i++): ?>
-    <input type=integer name="n[]" size=1 value="<?echo($n[$i]);?>">
+    <input type=integer name="n[]" size=1 value="<?php echo($n[$i]);?>">
     <?php endfor; ?>
     <input type=submit value="ano"> &nbsp; (zadejte čísla od 2 do 10)
     <input type=hidden name=a value=2>
@@ -97,7 +97,7 @@ if($in<3||$in>10||!(round($in)==$in)):
 ?> 
     <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="ano">  &nbsp; (zadejte číslo od 3 do 10)
     <input type=hidden name=a value=1>
   </form>
@@ -105,11 +105,11 @@ if($in<3||$in>10||!(round($in)==$in)):
 elseif($va < 2||$vb > 10||!$vc == 0):?>
     <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="ano">  &nbsp; (zadejte číslo od 3 do 10)
     <br> rozsah jednotlivých tříd &nbsp;&nbsp; n<sub>1</sub>, ..., n<sub><?php echo($in);?></sub>:&nbsp;
     <?php for ($i =0; $i <$in; $i++): ?>
-    <input type=integer name="n[]" size=1 value="<?echo($n[$i]);?>">
+    <input type=integer name="n[]" size=1 value="<?php echo($n[$i]);?>">
     <?php endfor; ?>
     <input type=submit value="ano"> &nbsp; (zadejte čísla od 2 do 10)
     <input type=hidden name=a value=2>
@@ -120,12 +120,12 @@ echo("<font color=red>nezadali jste celá čísla mezi 2 a 10, opravte</font>");
 else: ?>
   <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
   <br> počet tříd &nbsp;&nbsp; r: &nbsp;
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="ano"> 
      &nbsp; (zadejte číslo od 3 do 10)
     <br> rozsah jednotlivých tříd &nbsp;&nbsp; n<sub>1</sub>, ..., n<sub><?php echo($in);?></sub>:&nbsp;
     <?php for ($i =0; $i <$in; $i++): ?>
-    <input type=double name="n[]" size=1 value="<?echo($n[$i]);?>">
+    <input type=double name="n[]" size=1 value="<?php echo($n[$i]);?>">
     <?php endfor; $s[0]=0;
     for ($i =0; $i <$in; $i++): $s[$i]=$s[$i-1]+$n[$i]; endfor;?>    
     <input type=submit value="ano"> &nbsp; (zadejte čísla od 2 do 10)
@@ -135,7 +135,7 @@ else: ?>
     <?php for ($i =0; $i <$in; $i++):?>
     <br>X<sub><?php echo(($i+1));?>,1</sub>,...,X<sub><?php echo(($i+1));?>,<?php echo($n[$i]);?></sub>:&nbsp;
     <?php for ($k =0; $k <$n[$i]; $k++): ?>
-       <input type=double name="x[]" size=1 value="<?echo($x[$s[$i-1]+$k]);?>">
+       <input type=double name="x[]" size=1 value="<?php echo($x[$s[$i-1]+$k]);?>">
     <?php endfor;endfor;?>
     <br>
     <?php for ($i =0; $i <$in; $i++):
@@ -161,7 +161,7 @@ if($in<3||$in>10||!(round($in)==$in)):
 ?> 
     <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="ano">  &nbsp; (zadejte číslo od 3 do 10)
     <input type=hidden name=a value=1>
   </form>
@@ -171,11 +171,11 @@ if($in<3||$in>10||!(round($in)==$in)):
 elseif($va < 2||$vb > 10||!$vc == 0):?>
     <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="ano">  &nbsp; (zadejte číslo od 3 do 10)
     <br> rozsah jednotlivých tříd &nbsp;&nbsp; n<sub>1</sub>, ..., n<sub><?php echo($in);?></sub>:&nbsp;
     <?php for ($i =0; $i <$in; $i++): ?>
-    <input type=integer name="n[]" size=1 value="<?echo($n[$i]);?>">
+    <input type=integer name="n[]" size=1 value="<?php echo($n[$i]);?>">
     <?php endfor;?>
     <input type=submit value="ano"> 
     <input type=hidden name=a value=2>
@@ -186,11 +186,11 @@ else:
 ?>
 <form method=get>  hladina testu &nbsp;&nbsp; &alpha; = 0,05 
   <br> počet tříd &nbsp;&nbsp; r: &nbsp;
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="ano">  &nbsp; (zadejte čísla od 3 do 10)
     <br> rozsah jednotlivých tříd &nbsp;&nbsp; n<sub>1</sub>, ..., n<sub><?php echo($in);?></sub>:&nbsp;  
     <?php for ($i =0; $i <$in; $i++): ?>
-    <input type=double name="n[]" size=1 value="<?echo($n[$i]);?>">
+    <input type=double name="n[]" size=1 value="<?php echo($n[$i]);?>">
     <?php endfor; $s[0]=0;
     for ($i =0; $i <$in; $i++): $s[$i]=$s[$i-1]+$n[$i]; endfor;?>      
     <input type=submit value="ano"> &nbsp; (zadejte čísla od 2 do 10)
@@ -201,7 +201,7 @@ else:
   
       <?php for ($i =0; $i <$in; $i++):?>
   <br>X<sub><?php echo(($i+1));?>,1</sub>,...,X<sub><?php echo(($i+1));?>,<?php echo($n[$i]);?></sub>:&nbsp;<?php for ($k =0; $k <$n[$i]; $k++): ?>
-       <input type=double name="x[]" size=1 value="<?echo($x[$s[$i-1]+$k]);?>">
+       <input type=double name="x[]" size=1 value="<?php echo($x[$s[$i-1]+$k]);?>">
     <?php endfor;endfor;?>
     <br>
     <?php for ($i =0; $i <$in; $i++):

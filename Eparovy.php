@@ -2,10 +2,10 @@
 <head>
 <?php 
 
-$a = $_GET['a'];
-$x = $_GET['x'];
-$n = $_GET['n'];
-$y = $_GET['y'];
+$a = $_GET['a'] ?? null;
+$x = $_GET['x'] ?? null;
+$n = $_GET['n'] ?? null;
+$y = $_GET['y'] ?? null;
 
 function mean($xvar)
   {$s =0; $mez =count($xvar);
@@ -32,7 +32,7 @@ function cov($xvar,$yvar)
   return $co;}
 
 function invt1($sv)
-  {$stud=FOpen("stud2.txt",r);
+  {$stud=FOpen("stud2.txt", "r");
   $stav=($sv-1)*7;
   FSeek($stud,$stav);
   $inv=FRead($stud,5);
@@ -67,7 +67,7 @@ case 0: ?>
 
 <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
   <br> range &nbsp;&nbsp; n: &nbsp; 
-  <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
   <input type=submit value="yes">  &nbsp; (enter an integer from 3 to 30)
   <input type=hidden name=a value=1>
 </form>
@@ -80,7 +80,7 @@ if($n<3||$n>30||!(round($n)==$n)): ?>
 
   <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> range &nbsp;&nbsp; n:  &nbsp;  
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes"> &nbsp; (enter an integer from 3 to 30)
     <input type=hidden name=a value=1>
   </form>
@@ -91,17 +91,17 @@ else: ?>
 
   <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> range &nbsp;&nbsp; n:  &nbsp;  
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes">  &nbsp; (enter an integer from 3 to 30)
     <br> random sample from normal distribution &nbsp;&nbsp; 
     (X<sub>1</sub>,Y<sub>1</sub>),...,(X<sub><?php echo($n);?></sub>,Y<sub><?php echo($n);?></sub>) 
     <br> X<sub>1</sub>,...,X<sub><?php echo($n);?></sub> : &nbsp;&nbsp;&nbsp;&nbsp;
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="x[]" size=1 value="<?echo($x[$i]);?>">
+    <input type=double name="x[]" size=1 value="<?php echo($x[$i]);?>">
     <?php endfor;?> 
     <br> Y<sub>1</sub>,...,Y<sub><?php echo($n);?></sub>: &nbsp;&nbsp;&nbsp;&nbsp;
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="y[]" size=1 value="<?echo($y[$i]);?>">
+    <input type=double name="y[]" size=1 value="<?php echo($y[$i]);?>">
     <?php endfor;?> 
     <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub>: &mu;<sub>1</sub> = &mu;<sub>2</sub> <br>
     <input type=submit value="perform the test">
@@ -117,7 +117,7 @@ if($n<3||$n>30||!(round($n)==$n)):  ?>
 
   <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> range &nbsp;&nbsp; n:  &nbsp;  
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes"> &nbsp; (enter an integer from 3 to 30)
     <input type=hidden name=a value=1>
   </form>
@@ -128,17 +128,17 @@ else: ?>
 
   <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> range &nbsp;&nbsp; n: &nbsp;  
-    <input type=integer size=1 name=n value="<?echo($n);?>">&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>">&nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes"> &nbsp; (enter an integer from 3 to 30)
     <br> random sample from normal distribution &nbsp;&nbsp; 
     (X<sub>1</sub>,Y<sub>1</sub>),...,(X<sub><?php echo($n);?></sub>,Y<sub><?php echo($n);?></sub>) 
     <br> X<sub>1</sub>,...,X<sub><?php echo($n);?></sub> : &nbsp;&nbsp;&nbsp;&nbsp;
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="x[]" size=1 value="<?echo($x[$i]);?>">
+    <input type=double name="x[]" size=1 value="<?php echo($x[$i]);?>">
     <?php endfor;?> 
     <br> Y<sub>1</sub>,...,Y<sub><?php echo($n);?></sub>: &nbsp;&nbsp;&nbsp;&nbsp;
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="y[]" size=1 value="<?echo($y[$i]);?>">
+    <input type=double name="y[]" size=1 value="<?php echo($y[$i]);?>">
     <?php endfor;?> 
     <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub>: &mu;<sub>1</sub> = &mu;<sub>2</sub> <br>
     <input type=submit value="perform the test">
@@ -198,7 +198,7 @@ echo 'a=1"> two-sample t-test (Student) </a>';
     <input type=submit value="new entry">
     <input type=hidden name=a value=0>
   </form>
- <?
+ <?php 
 endif;
 default:
 endswitch;?>

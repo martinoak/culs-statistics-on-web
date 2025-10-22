@@ -2,12 +2,12 @@
 <head>
 <?php 
 
-$a = $_GET['a'];
-$n = $_GET['n'];
-$x = $_GET['x'];
-$y = $_GET['y'];
-$c = $_GET['c'];
-$aa = $_GET['aa'];
+$a = $_GET['a'] ?? null;
+$n = $_GET['n'] ?? null;
+$x = $_GET['x'] ?? null;
+$y = $_GET['y'] ?? null;
+$c = $_GET['c'] ?? null;
+$aa = $_GET['aa'] ?? null;
 
 function mean($xvar)
   {$s =0; $mez =count($xvar);
@@ -34,7 +34,7 @@ function cov($xvar,$yvar)
   return $co;}
 
 function invt1($sv)
-  {$stud=FOpen("stud2.txt",r);
+  {$stud=FOpen("stud2.txt", "r");
   $stav=($sv-1)*7;
   FSeek($stud,$stav);
   $inv=FRead($stud,5);
@@ -68,7 +68,7 @@ case 0: ?>
 
 <form method=get>  
   range &nbsp;&nbsp; n: &nbsp; 
-  <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
   <input type=submit value="yes">  &nbsp; (enter an integer from 3 to 30)
   <input type=hidden name=a value=1>
 </form>
@@ -81,7 +81,7 @@ if($n<3||$n>30||!(round($n)==$n)): ?>
 
   <form method=get>  
     <br> range &nbsp;&nbsp; n:  &nbsp;  
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes"> &nbsp; (enter an integer from 3 to 30)
     <input type=hidden name=a value=1>
   </form>
@@ -92,25 +92,25 @@ else: ?>
 
   <form method=get> 
     range &nbsp;&nbsp; n:  &nbsp;  
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes">  &nbsp; (enter an integer from 3 to 30)
     <br> explanatory variable and random variable of response variable from normal distribution &nbsp;&nbsp; 
     (x<sub>1</sub>,Y<sub>1</sub>),...,(x<sub><?php echo($n);?></sub>,Y<sub><?php echo($n);?></sub>) 
     <br> x<sub>1</sub>,...,x<sub><?php echo($n);?></sub> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="x[]" size=1 value="<?echo($x[$i]);?>">
+    <input type=double name="x[]" size=1 value="<?php echo($x[$i]);?>">
     <?php endfor;?> 
     <br> Y<sub>1</sub>,...,Y<sub><?php echo($n);?></sub>: &nbsp;&nbsp;&nbsp;&nbsp;
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="y[]" size=1 value="<?echo($y[$i]);?>">
+    <input type=double name="y[]" size=1 value="<?php echo($y[$i]);?>">
     <?php endfor;?> 
     <br> 
 <table>
 <tr><td>type of regression </td>
-<td><input type="radio" name="c" value=1 <? if($c==1):?> checked <? endif;?> > y=ax +b </td> </tr>
-<tr><td></td><td><input type="radio" name="c" value=2 <? if($c==2):?> checked <? endif;?> >  y=ax </td></tr>
+<td><input type="radio" name="c" value=1 <?php  if($c==1):?> checked <?php  endif;?> > y=ax +b </td> </tr>
+<tr><td></td><td><input type="radio" name="c" value=2 <?php  if($c==2):?> checked <?php  endif;?> >  y=ax </td></tr>
 </table>
-given vakue x<sub>0</sub> = <input type=double size=1 name=aa value="<?echo($aa);?>"><br>
+given vakue x<sub>0</sub> = <input type=double size=1 name=aa value="<?php echo($aa);?>"><br>
     <input type=submit value="perform the test">
     <input type=hidden name=a value=2>
   </form>
@@ -123,7 +123,7 @@ case 2:
 if($n<3||$n>30||!(round($n)==$n)):  ?>
   <form method=get>  
     <br> range &nbsp;&nbsp; n:  &nbsp;  
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes"> &nbsp; (enter an integer from 3 to 30)
     <input type=hidden name=a value=1>
   </form>
@@ -134,25 +134,25 @@ else: ?>
 
   <form method=get> 
      range &nbsp;&nbsp; n:  &nbsp;  
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes">  &nbsp; (enter an integer from 3 to 30)
     <br>  explanatory variable and random variable of response variable from normal distribution  &nbsp;&nbsp; 
     (x<sub>1</sub>,Y<sub>1</sub>),...,(x<sub><?php echo($n);?></sub>,Y<sub><?php echo($n);?></sub>) 
     <br> x<sub>1</sub>,...,x<sub><?php echo($n);?></sub> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="x[]" size=1 value="<?echo($x[$i]);?>">
+    <input type=double name="x[]" size=1 value="<?php echo($x[$i]);?>">
     <?php endfor;?> 
     <br> Y<sub>1</sub>,...,Y<sub><?php echo($n);?></sub>: &nbsp;&nbsp;&nbsp;&nbsp;
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="y[]" size=1 value="<?echo($y[$i]);?>">
+    <input type=double name="y[]" size=1 value="<?php echo($y[$i]);?>">
     <?php endfor;?> 
     <br> 
 <table>
 <tr><td>type of regression </td>
-<td><input type="radio" name="c" value=1 <? if($c==1):?> checked <? endif;?> > y=ax +b </td> </tr>
-<tr><td></td><td><input type="radio" name="c" value=2 <? if($c==2):?> checked <? endif;?> >  y=ax </td></tr>
+<td><input type="radio" name="c" value=1 <?php  if($c==1):?> checked <?php  endif;?> > y=ax +b </td> </tr>
+<tr><td></td><td><input type="radio" name="c" value=2 <?php  if($c==2):?> checked <?php  endif;?> >  y=ax </td></tr>
 </table>
-given value x<sub>0</sub> = <input type=double size=1 name=aa value="<?echo($aa);?>"><br>
+given value x<sub>0</sub> = <input type=double size=1 name=aa value="<?php echo($aa);?>"><br>
     <input type=submit value="perform the test">
     <input type=hidden name=a value=2>
   </form>
@@ -251,7 +251,7 @@ ImageDestroy($graf);
 <br>
 <img src="test.png">
 <br> warning: the browser Explorer usually does not load the restored image, it is necessarry to update the web-site (on the toolbar or by key F5)
- <?endif;?>
+ <?php endif;?>
 
  <?php elseif($c==2): ?> 
 
@@ -283,7 +283,7 @@ ImageDestroy($graf);
 
  <?php else: ?> 
     <br> <font color=red> you did not enter the type of regression </font>
- <? endif; ?> 
+ <?php  endif; ?> 
 
 <br><br>
 <?php
@@ -312,7 +312,7 @@ echo 'a=1"> Spearman correlation coefficient </a>';
     <input type=submit value="new entry">
     <input type=hidden name=a value=0>
   </form>
- <?
+ <?php 
 endif;
 default:
 endswitch;?>

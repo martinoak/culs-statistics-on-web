@@ -2,10 +2,10 @@
 <head>
 <?php 
 
-$a = $_GET['a'];
-$n = $_GET['n'];
-$x = $_GET['x'];
-$aa = $_GET['aa'];
+$a = $_GET['a'] ?? null;
+$n = $_GET['n'] ?? null;
+$x = $_GET['x'] ?? null;
+$aa = $_GET['aa'] ?? null;
 
 function mean($xvar)
   {$s =0; $mez =count($xvar);
@@ -25,7 +25,7 @@ function smodch($xvar)
   return $sp;}
 
 function invt1($sv)
-  {$stud=FOpen("stud2.txt",r);
+  {$stud=FOpen("stud2.txt", "r");
   $stav=($sv-1)*7;
   FSeek($stud,$stav);
   $inv=FRead($stud,5);
@@ -60,7 +60,7 @@ case 0: ?>
 
 <form method=get> level of test &nbsp;&nbsp; &alpha; = 0,05 
   <br> range &nbsp;&nbsp; n:  &nbsp; 
-  <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
   <input type=submit value="yes"> &nbsp;(enter an integer from 2 to 30)
   <input type=hidden name=a value=1>
 </form>
@@ -72,7 +72,7 @@ case 1:
 if($n<2||$n>30||!(round($n)==$n)): ?>
 <form method=get> level of test &nbsp;&nbsp; &alpha; = 0,05 
   <br> range &nbsp;&nbsp; n:  &nbsp; 
-  <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
   <input type=submit value="yes"> &nbsp; (enter an integer from 2 to 30)
   <input type=hidden name=a value=1>
 </form>
@@ -81,13 +81,13 @@ if($n<2||$n>30||!(round($n)==$n)): ?>
 else: ?>
 <form method=get> level of test &nbsp;&nbsp; &alpha; = 0,05 
   <br> range &nbsp;&nbsp; n:  &nbsp; 
-  <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
   <input type=submit value="yes"> &nbsp; (enter an integer from 2 to 30)
   <br> random sample from N(&mu;, &sigma;&sup2;) &nbsp;&nbsp; X<sub>1</sub>,...,X<sub><?php echo($n);?></sub>: &nbsp;
   <?php for ($i =0; $i <$n; $i++): ?>
-   <input type=double name="x[]" size=1 value="<?echo($x[$i]);?>">
+   <input type=double name="x[]" size=1 value="<?php echo($x[$i]);?>">
   <?php endfor;?> 
-  <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub> : &mu; = <input type=double size=1 name=aa value="<?echo($aa);?>"> <br>
+  <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub> : &mu; = <input type=double size=1 name=aa value="<?php echo($aa);?>"> <br>
   <input type=submit value="perform the test">
   <input type=hidden name=a value=2>
 </form>
@@ -99,7 +99,7 @@ case 2:
 if($n<2||$n>30||!(round($n)==$n)): ?>
 <form method=get> level of test &nbsp;&nbsp; &alpha; = 0,05 
   <br> range &nbsp;&nbsp; n:  &nbsp;
-  <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
   <input type=submit value="yes"> &nbsp; (enter an integer from 2 to 30)
   <input type=hidden name=a value=1>
 </form>
@@ -108,13 +108,13 @@ if($n<2||$n>30||!(round($n)==$n)): ?>
 else: ?>
 <form method=get> level of test &nbsp;&nbsp; &alpha; = 0,05 
   <br> range &nbsp;&nbsp; n:  &nbsp; 
-  <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
   <input type=submit value="yes"> &nbsp; (enter an integer from 2 to 30)
   <br> random sample from N(&mu;, &sigma;&sup2;) &nbsp;&nbsp; X <sub>1</sub>,...,X<sub><?php echo($n);?></sub> : 
   <?php for ($i =0; $i <$n; $i++): ?>
-   <input type=double name="x[]" size=1  value="<?echo($x[$i]);?>">
+   <input type=double name="x[]" size=1  value="<?php echo($x[$i]);?>">
   <?php endfor;?> 
-  <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub> : &mu; = <input type=double size=1 name=aa value="<?echo($aa);?>"><br>
+  <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub> : &mu; = <input type=double size=1 name=aa value="<?php echo($aa);?>"><br>
   <input type=submit value="perform the test">
   <input type=hidden name=a value=2>
 </form>
@@ -186,7 +186,7 @@ echo'aa=',$aa,'& a=1"> Wilcoxon signed-rank test </a>';
   <input type=hidden name=a value=0>
 </form>
 
-<?
+<?php 
 endif;
 default:
 endswitch;?>

@@ -2,11 +2,11 @@
 <head>
 <?php 
 
-$a = $_GET['a'];
-$m = $_GET['m'];
-$x = $_GET['x'];
-$n = $_GET['n'];
-$y = $_GET['y'];
+$a = $_GET['a'] ?? null;
+$m = $_GET['m'] ?? null;
+$x = $_GET['x'] ?? null;
+$n = $_GET['n'] ?? null;
+$y = $_GET['y'] ?? null;
 
 function razeni($x)
   {$n=count($x);
@@ -20,7 +20,7 @@ function razeni($x)
   return $p;}
 
 function wildv($sv,$sw)
-  {$wil=FOpen("wildvo1.txt",r);
+  {$wil=FOpen("wildvo1.txt", "r");
   $stav=($sv-4)*110+($sw-4)*4;
   FSeek($wil,$stav);
   $inv=FRead($wil,4);
@@ -54,8 +54,8 @@ case 0: ?>
 
   <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> rozsah &nbsp;&nbsp; m: &nbsp; 
-    <input type=integer size=1 name=m value="<?echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=m value="<?php echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="ano"> &nbsp; (zadejte čísla od 4 do 30)
     <input type=hidden name=a value=1>
   </form>
@@ -67,8 +67,8 @@ if($m<4||$n<4||$m>30||$n>30||!(round($m)==$m)||!(round($n)==$n)): ?>
   
   <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> rozsah &nbsp;&nbsp; m: &nbsp;
-    <input type=integer size=1 name=m value="<?echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=m value="<?php echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="ano"> &nbsp; (zadejte čísla od 4 do 30)
     <input type=hidden name=a value=1>
   </form>
@@ -79,15 +79,15 @@ else:?>
 
   <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> rozsah &nbsp;&nbsp; m: &nbsp; 
-    <input type=integer size=1 name=m value="<?echo($m);?>"> &nbsp;&nbsp; n: &nbsp; 
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=m value="<?php echo($m);?>"> &nbsp;&nbsp; n: &nbsp; 
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="ano"> &nbsp; (zadejte čísla od 4 do 30)
     <br> náhodný výběr ze spojitého rozdělení &nbsp;&nbsp; X<sub>1</sub>,...,X<sub><?php echo($m);?></sub>: &nbsp; 
     <?php for ($i =0; $i <$m; $i++): ?>
-    <input type=double name="x[]" size=1 value="<?echo($x[$i]);?>"> <?php endfor;?> 
+    <input type=double name="x[]" size=1 value="<?php echo($x[$i]);?>"> <?php endfor;?> 
     <br> náhodný výběr ze spojitého rozdělení &nbsp;&nbsp; Y<sub>1</sub>,...,Y<sub><?php echo($n);?></sub>: &nbsp;
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="y[]" size=1 value="<?echo($y[$i]);?>">
+    <input type=double name="y[]" size=1 value="<?php echo($y[$i]);?>">
     <?php endfor;?> 
     <br> nulová hypotéza &nbsp;&nbsp; H<sub>0</sub>: rozdělení X<sub>k</sub> a Y<sub>k</sub> jsou stejná <br>
     <input type=submit value="proveďte test">
@@ -102,8 +102,8 @@ case 2:
 if($m<4||$n<4||$m>30||$n>30||!(round($m)==$m)||!(round($n)==$n)): ?>
   <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> rozsah &nbsp;&nbsp; m: &nbsp;  
-    <input type=integer size=1 name=m value="<?echo($m);?>"> &nbsp;&nbsp; n:
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=m value="<?php echo($m);?>"> &nbsp;&nbsp; n:
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="ano"> &nbsp; (zadejte čísla od 4 do 30)
     <input type=hidden name=a value=1>
   </form>
@@ -114,16 +114,16 @@ else: ?>
 
   <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> rozsah &nbsp;&nbsp; m: &nbsp; 
-    <input type=integer size=1 name=m value="<?echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=m value="<?php echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="ano"> &nbsp; (zadejte čísla od 4 do 30)
     <br> náhodný výběr ze spojitého rozdělení &nbsp;&nbsp; X<sub>1</sub>,...,X<sub><?php echo($m);?></sub>: &nbsp; 
     <?php for ($i =0; $i <$m; $i++): ?>
-    <input type=double name="x[]" size=1 value="<?echo($x[$i]);?>">
+    <input type=double name="x[]" size=1 value="<?php echo($x[$i]);?>">
     <?php endfor;?> 
     <br> náhodný výběr ze spojitého rozdělení &nbsp;&nbsp; Y<sub>1</sub>,...,Y<sub><?php echo($n);?></sub>: &nbsp;
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="y[]" size=1 value="<?echo($y[$i]);?>">
+    <input type=double name="y[]" size=1 value="<?php echo($y[$i]);?>">
     <?php endfor;?> 
     <br> nulová hypotéza &nbsp;&nbsp; H<sub>0</sub>: rozdělení X<sub>k</sub> a Y<sub>k</sub> jsou stejná <br>
     <input type=submit value="proveďte test">
@@ -208,7 +208,7 @@ echo 'a=1"> dvouvýběrový F-test (Fischerův) </a>';
     <input type=submit value="nové zadání">
     <input type=hidden name=a value=0>
   </form>
-<?
+<?php 
 endif;
 default:
 endswitch;?>

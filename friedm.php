@@ -2,11 +2,11 @@
 <head>
 <?php
 
-$a = $_GET['a'];
-$ir = $_GET['ir'];
-$is = $_GET['is'];
-$ip = $_GET['ip'];
-$x = $_GET['x'];
+$a = $_GET['a'] ?? null;
+$ir = $_GET['ir'] ?? null;
+$is = $_GET['is'] ?? null;
+$ip = $_GET['ip'] ?? null;
+$x = $_GET['x'] ?? null;
 
 function sum($xvar)
   {$s =0; $mez =count($xvar);
@@ -26,7 +26,7 @@ function razeni($x)
 
 
 function invchi3($sv)
-  {$chi=FOpen("chi3.txt",r);
+  {$chi=FOpen("chi3.txt", "r");
   $stav=($sv-1)*7;
   FSeek($chi,$stav);
   $inv=FRead($chi,5);
@@ -61,9 +61,9 @@ switch($a):
 case 0: ?>
     <form method=get>  hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=ir value="<?echo($ir);?>">  
+    <input type=integer size=1 name=ir value="<?php echo($ir);?>">  
     &nbsp;&nbsp;&nbsp;&nbsp; m: &nbsp;
-    <input type=integer size=1 name=is value="<?echo($is);?>"> 
+    <input type=integer size=1 name=is value="<?php echo($is);?>"> 
     &nbsp;&nbsp;&nbsp;&nbsp; 
     <input type=submit value="ano"> &nbsp; (zadejte čísla od 2 do 10)
     <input type=hidden name=a value=1>
@@ -77,9 +77,9 @@ case 1:
 if($ir<2||$is<2||$ir>10||$is>10||!(round($ir)==$ir)||!(round($is)==$is)): ?>
     <form method=get>  hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=ir value="<?echo($ir);?>">  
+    <input type=integer size=1 name=ir value="<?php echo($ir);?>">  
     &nbsp;&nbsp;&nbsp;&nbsp; m: &nbsp;
-    <input type=integer size=1 name=is value="<?echo($is);?>"> 
+    <input type=integer size=1 name=is value="<?php echo($is);?>"> 
     &nbsp;&nbsp;&nbsp;&nbsp; 
     <input type=submit value="ano"> &nbsp; (zadejte čísla od 2 do 10)
     <input type=hidden name=a value=1>
@@ -92,9 +92,9 @@ else: ?>
 
     <form method=get>  hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=ir value="<?echo($ir);?>">  
+    <input type=integer size=1 name=ir value="<?php echo($ir);?>">  
     &nbsp;&nbsp;&nbsp;&nbsp; m: &nbsp;
-    <input type=integer size=1 name=is value="<?echo($is);?>"> 
+    <input type=integer size=1 name=is value="<?php echo($is);?>"> 
     &nbsp;&nbsp;&nbsp;&nbsp; 
     <input type=submit value="ano"> &nbsp; (zadejte čísla od 2 do 10) 
   <br> náhodné výběry ze spojitých rozdělení &nbsp;
@@ -104,7 +104,7 @@ else: ?>
     <br>
     X<sub><?php echo(($i+1)."1");?></sub>,...,X<sub><?php echo(($i+1).",".$is);?></sub>:
       <?php for ($j =0; $j <$is; $j++): ?>
-       <input type=double name="x[]" size=1 value="<?echo($x[$is*$i+$j]);?>">
+       <input type=double name="x[]" size=1 value="<?php echo($x[$is*$i+$j]);?>">
      <?php endfor;endfor;?>
     <br>
     <?php for ($i =0; $i <$ir; $i++):
@@ -128,9 +128,9 @@ case 2:
 if($ir<2||$is<2||$ir>10||$is>10||!(round($ir)==$ir)||!(round($is)==$is)): ?>
    <form method=get>  hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=ir value="<?echo($ir);?>">  
+    <input type=integer size=1 name=ir value="<?php echo($ir);?>">  
     &nbsp;&nbsp;&nbsp;&nbsp; m: &nbsp;
-    <input type=integer size=1 name=is value="<?echo($is);?>"> 
+    <input type=integer size=1 name=is value="<?php echo($is);?>"> 
     &nbsp;&nbsp;&nbsp;&nbsp; 
     <input type=submit value="ano"> &nbsp; (zadejte čísla od 2 do 10) 
     <input type=hidden name=a value=1>
@@ -142,9 +142,9 @@ else: ?>
 
    <form method=get>  hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=ir value="<?echo($ir);?>">  
+    <input type=integer size=1 name=ir value="<?php echo($ir);?>">  
     &nbsp;&nbsp;&nbsp;&nbsp; m: &nbsp;
-    <input type=integer size=1 name=is value="<?echo($is);?>"> 
+    <input type=integer size=1 name=is value="<?php echo($is);?>"> 
     &nbsp;&nbsp;&nbsp;&nbsp; 
     <input type=submit value="ano"> &nbsp; (zadejte čísla od 2 do 10) 
   <br> náhodné výběry ze spojitých rozdělení &nbsp;
@@ -154,7 +154,7 @@ else: ?>
     <br>
     X<sub><?php echo(($i+1)."1");?></sub>,...,X<sub><?php echo(($i+1).",".$is);?></sub>:
       <?php for ($j =0; $j <$is; $j++): ?>
-       <input type=double name="x[]" size=1 value="<?echo($x[$is*$i+$j]);?>">
+       <input type=double name="x[]" size=1 value="<?php echo($x[$is*$i+$j]);?>">
      <?php endfor;endfor;?>
     <br>
     <?php for ($i =0; $i <$ir; $i++):

@@ -2,11 +2,11 @@
 <head>
 <?php 
 
-$a = $_GET['a'];
-$m = $_GET['m'];
-$x = $_GET['x'];
-$n = $_GET['n'];
-$y = $_GET['y'];
+$a = $_GET['a'] ?? null;
+$m = $_GET['m'] ?? null;
+$x = $_GET['x'] ?? null;
+$n = $_GET['n'] ?? null;
+$y = $_GET['y'] ?? null;
 
 function mean($xvar)
   {$s =0; $mez =count($xvar);
@@ -26,7 +26,7 @@ function smodch($xvar)
   return $sp;}
 
 function invt1($sv)
-  {$stud1=FOpen("stud2.txt",r);
+  {$stud1=FOpen("stud2.txt", "r");
   $stav=($sv-1)*7+0;
   FSeek($stud1,$stav);
   $inv=FRead($stud1,5);
@@ -34,7 +34,7 @@ function invt1($sv)
   return $inv;}  
 
 function invf1($sv,$sw)
-  {$fis=FOpen("fis1.txt",r);
+  {$fis=FOpen("fis1.txt", "r");
   $stav=($sv-1)*211+($sw-1)*7;
   FSeek($fis,$stav);
   $inv=FRead($fis,6);
@@ -42,7 +42,7 @@ function invf1($sv,$sw)
   return $inv;} 
 
 function invf2($sv,$sw)
-  {$fis=FOpen("fis4.txt",r);
+  {$fis=FOpen("fis4.txt", "r");
   $stav=($sv-1)*151+($sw-1)*5;
   FSeek($fis,$stav);
   $inv=FRead($fis,4);
@@ -76,8 +76,8 @@ case 0: ?>
 
 <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
   <br> range &nbsp;&nbsp; m: &nbsp;
-  <input type=integer size=1 name=m value="<?echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
-  <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=integer size=1 name=m value="<?php echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
   <input type=submit value="yes"> &nbsp; (enter integers from 2 to 30)
   <input type=hidden name=a value=1>
 </form>
@@ -89,8 +89,8 @@ case 1:
 if($m<2||$n<2||$m>30||$n>30||!(round($m)==$m)||!(round($n)==$n)): ?>
   <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> range &nbsp;&nbsp; m: &nbsp; 
-    <input type=integer size=1 name=m value="<?echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=m value="<?php echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes"> &nbsp; (enter integers from 2 to 30)
     <input type=hidden name=a value=1>
   </form>
@@ -101,15 +101,15 @@ else: ?>
 
   <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> range &nbsp;&nbsp; m: &nbsp;
-    <input type=integer size=1 name=m value="<?echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=m value="<?php echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes"> &nbsp; (enter integers from 2 to 30)
     <br> random sample from N(&mu;<sub>1</sub>, &sigma;<sub>1</sub>&sup2;) &nbsp;&nbsp; X<sub>1</sub>,...,X<sub><?php echo($m);?></sub>:&nbsp; 
     <?php for ($i =0; $i <$m; $i++): ?>
-    <input type=double name="x[]" size=1 value="<?echo($x[$i]);?>"> <?php endfor;?> 
+    <input type=double name="x[]" size=1 value="<?php echo($x[$i]);?>"> <?php endfor;?> 
     <br> random sample from N(&mu;<sub>2</sub>, &sigma;<sub>2</sub>&sup2;) &nbsp;&nbsp; Y<sub>1</sub>,...,Y<sub><?php echo($n);?></sub>:&nbsp; 
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="y[]" size=1 value="<?echo($y[$i]);?>"> <?php endfor;?> 
+    <input type=double name="y[]" size=1 value="<?php echo($y[$i]);?>"> <?php endfor;?> 
     <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub>: &mu;<sub>1</sub> = &mu;<sub>2</sub> 
     <br> <font color=red> the test can be used only on condition &sigma;<sub>1</sub>&sup2; = &sigma;<sub>2</sub>&sup2;</font><br> 
     <input type=submit value="perform the test">
@@ -125,8 +125,8 @@ if($m<2||$n<2||$m>30||$n>30||!(round($m)==$m)||!(round($n)==$n)):?>
   
   <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> range &nbsp;&nbsp; m: &nbsp;
-    <input type=integer size=1 name=m value="<?echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=m value="<?php echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes"> &nbsp; (enter integers from 2 to 30)
     <input type=hidden name=a value=1>
   </form>
@@ -137,16 +137,16 @@ else: ?>
 
   <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> range &nbsp;&nbsp; m: &nbsp;
-    <input type=integer size=1 name=m value="<?echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=m value="<?php echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes"> &nbsp; (enter integers from 2 to 30)
     <br> random sample from N(&mu;<sub>1</sub>, &sigma;<sub>1</sub>&sup2;)  &nbsp;&nbsp; X<sub>1</sub>,...,X<sub><?php echo($m);?></sub>: &nbsp; 
     <?php for ($i =0; $i <$m; $i++): ?> 
-    <input type=double name="x[]" size=1 value="<?echo($x[$i]);?>"> 
+    <input type=double name="x[]" size=1 value="<?php echo($x[$i]);?>"> 
     <?php endfor;?> 
     <br> random sample from N(&mu;<sub>1</sub>, &sigma;<sub>1</sub>&sup2;)  &nbsp;&nbsp; Y<sub>1</sub>,...,Y<sub><?php echo($n);?></sub>: &nbsp; 
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="y[]" size=1 value="<?echo($y[$i]);?>">
+    <input type=double name="y[]" size=1 value="<?php echo($y[$i]);?>">
     <?php endfor;?> 
     <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub>: &mu;<sub>1</sub> = &mu;<sub>2</sub> 
     <br><font color=red> the test can be used only on condition &sigma;<sub>1</sub>&sup2; = &sigma;<sub>2</sub>&sup2;</font>
@@ -219,7 +219,7 @@ echo 'a=1"> Wilcoxon sum-rank test (Mann-Whitney test) </a>';
     <input type=submit value="new entry">
     <input type=hidden name=a value=0>
   </form> 
-<?
+<?php 
 endif;
 default:
 endswitch;?>

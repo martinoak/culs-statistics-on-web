@@ -2,11 +2,11 @@
 <head>
 <?php
 
-$a = $_GET['a'];
-$ir = $_GET['ir'];
-$is = $_GET['is'];
-$ip = $_GET['ip'];
-$x = $_GET['x'];
+$a = $_GET['a'] ?? null;
+$ir = $_GET['ir'] ?? null;
+$is = $_GET['is'] ?? null;
+$ip = $_GET['ip'] ?? null;
+$x = $_GET['x'] ?? null;
 
 function sum($xvar)
   {$s =0; $mez =count($xvar);
@@ -20,7 +20,7 @@ function sctv($xvar,$me)
 
 
 function invf($sv,$sw)
-  {$fis=FOpen("fis3.txt",r);
+  {$fis=FOpen("fis3.txt", "r");
   $stav=($sw-1)*151+($sv-1)*5;
   FSeek($fis,$stav);
   $inv=FRead($fis,4);
@@ -54,11 +54,11 @@ switch($a):
 case 0: ?>
     <form method=get>  hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd A &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=ir value="<?echo($ir);?>">  
+    <input type=integer size=1 name=ir value="<?php echo($ir);?>">  
     &nbsp;&nbsp;&nbsp;&nbsp; počet tříd B &nbsp;&nbsp; s: &nbsp;
-    <input type=integer size=1 name=is value="<?echo($is);?>"> &nbsp; (zadejte čísla od 2 do 10) ,
+    <input type=integer size=1 name=is value="<?php echo($is);?>"> &nbsp; (zadejte čísla od 2 do 10) ,
     &nbsp;&nbsp;&nbsp;&nbsp; rozsah jednotlivých tříd &nbsp;&nbsp; p: &nbsp;
-    <input type=integer size=1 name=ip value="<?echo($ip);?>">      &nbsp; (zadejte číslo od 2 do 10)
+    <input type=integer size=1 name=ip value="<?php echo($ip);?>">      &nbsp; (zadejte číslo od 2 do 10)
     <input type=submit value="ano">
     <input type=hidden name=a value=1>
   </form>
@@ -69,11 +69,11 @@ case 1:
 if($ir<2||$is<2||$ip<2||$ir>10||$is>10||$ip>10||!(round($ir)==$ir)||!(round($is)==$is)||!(round($ip)==$ip)): ?>
     <form method=get>  hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd A &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=ir value="<?echo($ir);?>">  
+    <input type=integer size=1 name=ir value="<?php echo($ir);?>">  
     &nbsp;&nbsp;&nbsp;&nbsp; počet tříd B &nbsp;&nbsp; s: &nbsp;
-    <input type=integer size=1 name=is value="<?echo($is);?>"> &nbsp; (zadejte čísla od 2 do 10) ,
+    <input type=integer size=1 name=is value="<?php echo($is);?>"> &nbsp; (zadejte čísla od 2 do 10) ,
     &nbsp;&nbsp;&nbsp;&nbsp; rozsah jednotlivých tříd &nbsp;&nbsp; p: &nbsp;
-    <input type=integer size=1 name=ip value="<?echo($ip);?>">      &nbsp; (zadejte číslo od 2 do 10)
+    <input type=integer size=1 name=ip value="<?php echo($ip);?>">      &nbsp; (zadejte číslo od 2 do 10)
     <input type=submit value="ano">
     <input type=hidden name=a value=1>
   </form>
@@ -84,11 +84,11 @@ else: ?>
 
     <form method=get>  hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd A &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=ir value="<?echo($ir);?>">  
+    <input type=integer size=1 name=ir value="<?php echo($ir);?>">  
     &nbsp;&nbsp;&nbsp;&nbsp; počet tříd B &nbsp;&nbsp; s: &nbsp;
-    <input type=integer size=1 name=is value="<?echo($is);?>"> &nbsp; (zadejte čísla od 2 do 10) ,
+    <input type=integer size=1 name=is value="<?php echo($is);?>"> &nbsp; (zadejte čísla od 2 do 10) ,
     &nbsp;&nbsp;&nbsp;&nbsp; rozsah jednotlivých tříd &nbsp;&nbsp; p: &nbsp;
-    <input type=integer size=1 name=ip value="<?echo($ip);?>"> &nbsp; (zadejte číslo od 2 do 10)
+    <input type=integer size=1 name=ip value="<?php echo($ip);?>"> &nbsp; (zadejte číslo od 2 do 10)
     <input type=submit value="ano">
   <br> náhodné výběry z &nbsp;
 <table><tr>
@@ -110,7 +110,7 @@ N(&mu;<sub><?php echo($ir.",1");?></sub>, &sigma;&sup2;) ,...,  N(&mu;<sub><?php
     <br><?php for ($k =0; $k <$is; $k++): ?>
     X<sub><?php echo(($i+1).",".($k+1).",1");?></sub>,...,X<sub><?php echo(($i+1).",".($k+1).",".$ip);?></sub>:
       <?php for ($j =0; $j <$ip; $j++): ?>
-       <input type=double name="x[]" size=1 value="<?echo($x[$is*$ip*$i+$k*$ip+$j]);?>">
+       <input type=double name="x[]" size=1 value="<?php echo($x[$is*$ip*$i+$k*$ip+$j]);?>">
     <?php endfor;?> &nbsp;&nbsp;&nbsp;&nbsp; <?php endfor;endfor;?>
     <br>
     <?php for ($i =0; $i <$ir; $i++):
@@ -142,11 +142,11 @@ case 2:
 if($ir<2||$is<2||$ip<2||$ir>10||$is>10||$ip>10||!(round($ir)==$ir)||!(round($is)==$is)||!(round($ip)==$ip)): ?>
     <form method=get>  hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd A &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=ir value="<?echo($ir);?>">  
+    <input type=integer size=1 name=ir value="<?php echo($ir);?>">  
     &nbsp;&nbsp;&nbsp;&nbsp; počet tříd B &nbsp;&nbsp; s: &nbsp;
-    <input type=integer size=1 name=is value="<?echo($is);?>"> &nbsp; (zadejte čísla od 2 do 10) ,
+    <input type=integer size=1 name=is value="<?php echo($is);?>"> &nbsp; (zadejte čísla od 2 do 10) ,
     &nbsp;&nbsp;&nbsp;&nbsp; rozsah jednotlivých tříd &nbsp;&nbsp; p: &nbsp;
-    <input type=integer size=1 name=ip value="<?echo($ip);?>">      &nbsp; (zadejte číslo od 2 do 10)
+    <input type=integer size=1 name=ip value="<?php echo($ip);?>">      &nbsp; (zadejte číslo od 2 do 10)
     <input type=submit value="ano">
     <input type=hidden name=a value=1>
   </form>
@@ -157,11 +157,11 @@ else: ?>
 
     <form method=get>  hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> počet tříd A &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=ir value="<?echo($ir);?>">  
+    <input type=integer size=1 name=ir value="<?php echo($ir);?>">  
     &nbsp;&nbsp;&nbsp;&nbsp; počet tříd B &nbsp;&nbsp; s: &nbsp;
-    <input type=integer size=1 name=is value="<?echo($is);?>"> &nbsp; (zadejte čísla od 2 do 10) ,
+    <input type=integer size=1 name=is value="<?php echo($is);?>"> &nbsp; (zadejte čísla od 2 do 10) ,
     &nbsp;&nbsp;&nbsp;&nbsp; rozsah jednotlivých tříd &nbsp;&nbsp; p: &nbsp;
-    <input type=integer size=1 name=ip value="<?echo($ip);?>">      &nbsp; (zadejte číslo od 2 do 10)
+    <input type=integer size=1 name=ip value="<?php echo($ip);?>">      &nbsp; (zadejte číslo od 2 do 10)
     <input type=submit value="ano">
   <br> náhodné výběry z &nbsp;
 <table><tr>
@@ -183,7 +183,7 @@ N(&mu;<sub><?php echo($ir.",1");?></sub>, &sigma;&sup2;) ,...,  N(&mu;<sub><?php
     <br><?php for ($k =0; $k <$is; $k++): ?>
     X<sub><?php echo(($i+1).",".($k+1).",1");?></sub>,...,X<sub><?php echo(($i+1).",".($k+1).",".$ip);?></sub>:
       <?php for ($j =0; $j <$ip; $j++): ?>
-       <input type=double name="x[]" size=1 value="<?echo($x[$is*$ip*$i+$k*$ip+$j]);?>">
+       <input type=double name="x[]" size=1 value="<?php echo($x[$is*$ip*$i+$k*$ip+$j]);?>">
     <?php endfor;?> &nbsp;&nbsp;&nbsp;&nbsp; <?php endfor;endfor;?>
     <br>
 

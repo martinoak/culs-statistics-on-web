@@ -2,11 +2,11 @@
 <head>
 <?php 
 
-$a = $_GET['a'];
-$c = $_GET['c'];
-$n = $_GET['n'];
-$x = $_GET['x'];
-$aa = $_GET['aa'];
+$a = $_GET['a'] ?? null;
+$c = $_GET['c'] ?? null;
+$n = $_GET['n'] ?? null;
+$x = $_GET['x'] ?? null;
+$aa = $_GET['aa'] ?? null;
 
 function mean($xvar)
   {$s =0; $mez =count($xvar);
@@ -26,7 +26,7 @@ function smodch($xvar)
   return $sp;}
 
 function invt2($sv)
-  {$stud=FOpen("stud1.txt",r);
+  {$stud=FOpen("stud1.txt", "r");
   $stav=($sv-1)*7;
   FSeek($stud,$stav);
   $inv=FRead($stud,5);
@@ -60,7 +60,7 @@ case 0: ?>
 
 <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
   <br> rozsah &nbsp;&nbsp; n:  &nbsp; 
-  <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
   <input type=submit value="ano"> &nbsp;(zadejte číslo od 2 do 30)
   <input type=hidden name=a value=1>
 </form>
@@ -72,7 +72,7 @@ case 1:
 if($n<2||$n>30||!(round($n)==$n)): ?>
 <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
   <br> rozsah &nbsp;&nbsp; n:  &nbsp; 
-  <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
   <input type=submit value="ano"> &nbsp; (zadejte číslo od 2 do 30)
   <input type=hidden name=a value=1>
 </form>
@@ -81,17 +81,17 @@ if($n<2||$n>30||!(round($n)==$n)): ?>
 else: ?>
 <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
   <br> rozsah &nbsp;&nbsp; n:  &nbsp; 
-  <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
   <input type=submit value="ano"> &nbsp; (zadejte číslo od 2 do 30)
   <br> náhodný výběr z N(&mu;, &sigma;&sup2;) &nbsp;&nbsp; X<sub>1</sub>,...,X<sub><?php echo($n);?></sub>: &nbsp;
   <?php for ($i =0; $i <$n; $i++): ?>
-   <input type=double name="x[]" size=1 value="<?echo($x[$i]);?>">
+   <input type=double name="x[]" size=1 value="<?php echo($x[$i]);?>">
   <?php endfor;?> 
 <table>
 <tr><td>nulová hypotéza &nbsp;&nbsp; H<sub>0</sub> :</td>
-<td><input type="radio" name="c" value=1 <? if($c==1):?> checked <? endif;?>> &mu; &le;</td>
-<td rowspan=2><input type=double size=1 name=aa value="<?echo($aa);?>"></td></tr>
-<tr><td></td><td><input type="radio" name="c" value=2 <? if($c==2):?> checked <? endif;?>>  &mu; &ge; </td></tr>
+<td><input type="radio" name="c" value=1 <?php  if($c==1):?> checked <?php  endif;?>> &mu; &le;</td>
+<td rowspan=2><input type=double size=1 name=aa value="<?php echo($aa);?>"></td></tr>
+<tr><td></td><td><input type="radio" name="c" value=2 <?php  if($c==2):?> checked <?php  endif;?>>  &mu; &ge; </td></tr>
 </table> 
   <input type=submit value="proveďte test">
   <input type=hidden name=a value=2>
@@ -104,7 +104,7 @@ case 2:
 if($n<2||$n>30||!(round($n)==$n)): ?>
 <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
   <br> rozsah &nbsp;&nbsp; n:  &nbsp;
-  <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
   <input type=submit value="ano"> &nbsp; (zadejte číslo od 2 do 30)
   <input type=hidden name=a value=1>
 </form>
@@ -113,17 +113,17 @@ if($n<2||$n>30||!(round($n)==$n)): ?>
 else: ?>
 <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
   <br> rozsah &nbsp;&nbsp; n:  &nbsp; 
-  <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
   <input type=submit value="ano"> &nbsp; (zadejte číslo od 2 do 30)
   <br> náhodný výběr z N(&mu;, &sigma;&sup2;) &nbsp;&nbsp; X <sub>1</sub>,...,X<sub><?php echo($n);?></sub> : 
   <?php for ($i =0; $i <$n; $i++): ?>
-   <input type=double name="x[]" size=1  value="<?echo($x[$i]);?>">
+   <input type=double name="x[]" size=1  value="<?php echo($x[$i]);?>">
   <?php endfor;?> 
 <table>
 <tr><td>nulová hypotéza &nbsp;&nbsp; H<sub>0</sub> :</td>
-<td><input type="radio" name="c" value=1 <? if($c==1):?> checked <? endif;?> > &mu; &le;</td>
-<td rowspan=2><input type=double size=1 name=aa value="<?echo($aa);?>"></td></tr>
-<tr><td></td><td><input type="radio" name="c" value=2 <? if($c==2):?> checked <? endif;?> >  &mu; &ge; </td></tr>
+<td><input type="radio" name="c" value=1 <?php  if($c==1):?> checked <?php  endif;?> > &mu; &le;</td>
+<td rowspan=2><input type=double size=1 name=aa value="<?php echo($aa);?>"></td></tr>
+<tr><td></td><td><input type="radio" name="c" value=2 <?php  if($c==2):?> checked <?php  endif;?> >  &mu; &ge; </td></tr>
 </table>
   <input type=submit value="proveďte test">
   <input type=hidden name=a value=2>
@@ -192,8 +192,8 @@ else: ?>
 
     <?php else: ?> 
     <br> <font color=red> nezadali jste nerovnost v jednostranném testu </font>
-    <? endif; ?> 
-<?  endif; ?> 
+    <?php  endif; ?> 
+<?php   endif; ?> 
 
 <br><br>
 <?php
@@ -225,7 +225,7 @@ echo'aa=',$aa,'& a=1"> jednovýběrový Wilcoxonův test </a>';
   <input type=hidden name=a value=0>
 </form>
 
-<?
+<?php 
 endif;
 default:
 endswitch;?>

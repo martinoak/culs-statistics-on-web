@@ -2,10 +2,10 @@
 <head>
 <?php 
 
-$a = $_GET['a'];
-$x = $_GET['x'];
-$n = $_GET['n'];
-$aa = $_GET['aa'];
+$a = $_GET['a'] ?? null;
+$x = $_GET['x'] ?? null;
+$n = $_GET['n'] ?? null;
+$aa = $_GET['aa'] ?? null;
 
 
 function razeni1($x)
@@ -25,7 +25,7 @@ function razeni1($x)
  return $p;}
 
 function wiljed($sv)
-  {$wil=FOpen("wiljed1.txt",r);
+  {$wil=FOpen("wiljed1.txt", "r");
   $stav=($sv-6)*5;
   FSeek($wil,$stav);
   $inv=FRead($wil,3);
@@ -60,7 +60,7 @@ case 0: ?>
 
 <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
   <br> rozsah &nbsp;&nbsp; n: &nbsp; 
-  <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
   <input type=submit value="ano"> &nbsp; (zadejte číslo od 6 do 30)
   <input type=hidden name=a value=1>
 </form>
@@ -73,7 +73,7 @@ if($n<6||$n>30||!(round($n)==$n)): ?>
 
 <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
   <br> rozsah &nbsp;&nbsp; n: &nbsp; 
-  <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
   <input type=submit value="ano"> &nbsp; (zadejte číslo od 6 do 30)
   <input type=hidden name=a value=1>
 </form>
@@ -84,14 +84,14 @@ else:?>
 
   <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> rozsah &nbsp;&nbsp; n: &nbsp; 
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="ano"> &nbsp; (zadejte číslo od 6 do 30)
     <br> náhodný výběr ze spojitého rozdělení &nbsp;&nbsp; X<sub>1</sub>,...,X<sub><?php echo($n);?></sub>: &nbsp;
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="x[]" size=1 value="<?echo($x[$i]);?>">
+    <input type=double name="x[]" size=1 value="<?php echo($x[$i]);?>">
     <?php endfor;?> 
     <br> nulová hypotéza &nbsp;&nbsp;
-    H<sub>0</sub>: rozdělení symetrické kolem <input type=double size=1 name=aa value="<?echo($aa);?>"><br>
+    H<sub>0</sub>: rozdělení symetrické kolem <input type=double size=1 name=aa value="<?php echo($aa);?>"><br>
     <input type=submit value="proveďte test">
     <input type=hidden name=a value=2>
   </form>
@@ -104,7 +104,7 @@ if($n<6||$n>30||!(round($n)==$n)): ?>
 
   <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> rozsah &nbsp;&nbsp; n: &nbsp; 
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="ano"> &nbsp; (zadejte číslo od 6 do 30)
     <input type=hidden name=a value=1>
   </form>
@@ -114,13 +114,13 @@ else:?>
 
   <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
     <br> rozsah &nbsp;&nbsp; n:&nbsp; 
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="ano"> &nbsp; (zadejte číslo od 6 do 30)
     <br> náhodný výběr ze spojitého rozdělení &nbsp;&nbsp; X<sub>1</sub>,...,X<sub><?php echo($n);?></sub>: &nbsp;
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="x[]" size=1  value="<?echo($x[$i]);?>">
+    <input type=double name="x[]" size=1  value="<?php echo($x[$i]);?>">
     <?php endfor;?> 
-    <br> nulová hypotéza &nbsp;&nbsp; H<sub>0</sub>: rozdělení symetrické kolem  <input type=double size=1 name=aa value="<?echo($aa);?>"><br>
+    <br> nulová hypotéza &nbsp;&nbsp; H<sub>0</sub>: rozdělení symetrické kolem  <input type=double size=1 name=aa value="<?php echo($aa);?>"><br>
     <input type=submit value="proveďte test">
     <input type=hidden name=a value=2>
   </form>
@@ -217,7 +217,7 @@ echo'aa=',$aa,'& a=1"> jednovýběrový test pro rozptyl </a>';
       <input type=submit value="nové zadání">
       <input type=hidden name=a value=0>
     </form> 
-<?
+<?php 
   endif;
 endif;
 default:

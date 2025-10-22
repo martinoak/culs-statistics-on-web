@@ -2,10 +2,10 @@
 <head>
 <?php
 
-$a = $_GET['a'];
-$in = $_GET['in'];
-$n = $_GET['n'];
-$x = $_GET['x'];
+$a = $_GET['a'] ?? null;
+$in = $_GET['in'] ?? null;
+$n = $_GET['n'] ?? null;
+$x = $_GET['x'] ?? null;
 
 function sum($xvar)
   {$s =0; $mez =count($xvar);
@@ -25,7 +25,7 @@ function razeni($x)
 
 
 function invchi3($sv)
-  {$chi=FOpen("chi3.txt",r);
+  {$chi=FOpen("chi3.txt", "r");
   $stav=($sv-1)*7;
   FSeek($chi,$stav);
   $inv=FRead($chi,5);
@@ -59,7 +59,7 @@ switch($a):
 case 0: ?>
     <form method=get>  test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> number of categories &nbsp;&nbsp; r: &nbsp;
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="yes">  &nbsp; (enter an integer from 3 to 10)
     <input type=hidden name=a value=1>
     </form>
@@ -71,7 +71,7 @@ case 1:
 if($in<3||$in>10||!(round($in)==$in)):    ?>  
     <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> number of categories &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="yes">  &nbsp; (enter an integer from 3 to 10)
     <input type=hidden name=a value=1>
   </form>
@@ -79,11 +79,11 @@ if($in<3||$in>10||!(round($in)==$in)):    ?>
 else:?>
     <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> number of categories &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="yes">  &nbsp; (enter an integer from 3 to 10)
     <br> range of categories &nbsp;&nbsp; n<sub>1</sub>, ..., n<sub><?php echo($in);?></sub>:&nbsp;
     <?php for ($i =0; $i <$in; $i++): ?>
-    <input type=integer name="n[]" size=1 value="<?echo($n[$i]);?>">
+    <input type=integer name="n[]" size=1 value="<?php echo($n[$i]);?>">
     <?php endfor; ?>
     <input type=submit value="yes"> &nbsp; (enter integers from 2 to 10)
     <input type=hidden name=a value=2>
@@ -102,7 +102,7 @@ if($in<3||$in>10||!(round($in)==$in)):
 ?> 
     <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> number of categories &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="yes">  &nbsp; (enter an integer from 3 to 10)
     <input type=hidden name=a value=1>
   </form>
@@ -110,11 +110,11 @@ if($in<3||$in>10||!(round($in)==$in)):
 elseif($va < 2||$vb > 10||!$vc == 0):?>
     <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> number of categories &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="yes">  &nbsp; (enter an integer from 3 to 10)
     <br> range of categories &nbsp;&nbsp; n<sub>1</sub>, ..., n<sub><?php echo($in);?></sub>:&nbsp;
     <?php for ($i =0; $i <$in; $i++): ?>
-    <input type=integer name="n[]" size=1 value="<?echo($n[$i]);?>">
+    <input type=integer name="n[]" size=1 value="<?php echo($n[$i]);?>">
     <?php endfor; ?>
     <input type=submit value="yes"> &nbsp; (enter integers from 2 to 10)
     <input type=hidden name=a value=2>
@@ -125,12 +125,12 @@ echo("<font color=red> you did not enter integers between 2 and 10, correct</fon
 else: ?>
   <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
   <br> number of categories &nbsp;&nbsp; r: &nbsp;
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="yes"> 
      &nbsp; (enter an integer from 3 to 10)
     <br> range of categories &nbsp;&nbsp; n<sub>1</sub>, ..., n<sub><?php echo($in);?></sub>:&nbsp;
     <?php for ($i =0; $i <$in; $i++): ?>
-    <input type=double name="n[]" size=1 value="<?echo($n[$i]);?>">
+    <input type=double name="n[]" size=1 value="<?php echo($n[$i]);?>">
     <?php endfor; $s[0]=0;
     for ($i =0; $i <$in; $i++): $s[$i]=$s[$i-1]+$n[$i]; endfor;?>    
     <input type=submit value="yes"> &nbsp; (enter integers from 2 to 10)
@@ -138,7 +138,7 @@ else: ?>
     <?php for ($i =0; $i <$in; $i++):?>
     <br>X<sub><?php echo(($i+1));?>,1</sub>,...,X<sub><?php echo(($i+1));?>,<?php echo($n[$i]);?></sub>:&nbsp;
     <?php for ($k =0; $k <$n[$i]; $k++): ?>
-       <input type=double name="x[]" size=1 value="<?echo($x[$s[$i-1]+$k]);?>">
+       <input type=double name="x[]" size=1 value="<?php echo($x[$s[$i-1]+$k]);?>">
     <?php endfor;endfor;?>
     <br>
     <?php for ($i =0; $i <$in; $i++):
@@ -163,7 +163,7 @@ if($in<3||$in>10||!(round($in)==$in)):
 ?> 
     <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> number of categories &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="yes">  &nbsp; (enter an integer from 3 to 10)
     <input type=hidden name=a value=1>
   </form>
@@ -173,11 +173,11 @@ if($in<3||$in>10||!(round($in)==$in)):
 elseif($va < 2||$vb > 10||!$vc == 0):?>
     <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> number of categories &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="yes">  &nbsp; (enter an integer from 3 to 10)
     <br> rozsah jednotlivých tříd &nbsp;&nbsp; n<sub>1</sub>, ..., n<sub><?php echo($in);?></sub>:&nbsp;
     <?php for ($i =0; $i <$in; $i++): ?>
-    <input type=integer name="n[]" size=1 value="<?echo($n[$i]);?>">
+    <input type=integer name="n[]" size=1 value="<?php echo($n[$i]);?>">
     <?php endfor;?>
     <input type=submit value="yes"> 
     <input type=hidden name=a value=2>
@@ -188,11 +188,11 @@ else:
 ?>
 <form method=get>  test level &nbsp;&nbsp; &alpha; = 0,05 
   <br> number of categories &nbsp;&nbsp; r: &nbsp;
-    <input type=integer size=1 name=in value="<?echo($in);?>"> 
+    <input type=integer size=1 name=in value="<?php echo($in);?>"> 
     <input type=submit value="yes">  &nbsp; (enter an integer from 3 to 10)
     <br> range of categories &nbsp;&nbsp; n<sub>1</sub>, ..., n<sub><?php echo($in);?></sub>:&nbsp;  
     <?php for ($i =0; $i <$in; $i++): ?>
-    <input type=double name="n[]" size=1 value="<?echo($n[$i]);?>">
+    <input type=double name="n[]" size=1 value="<?php echo($n[$i]);?>">
     <?php endfor; $s[0]=0;
     for ($i =0; $i <$in; $i++): $s[$i]=$s[$i-1]+$n[$i]; endfor;?>      
     <input type=submit value="yes"> &nbsp; (enter integers from 2 to 10)
@@ -200,7 +200,7 @@ else:
  
       <?php for ($i =0; $i <$in; $i++):?>
   <br>X<sub><?php echo(($i+1));?>,1</sub>,...,X<sub><?php echo(($i+1));?>,<?php echo($n[$i]);?></sub>:&nbsp;<?php for ($k =0; $k <$n[$i]; $k++): ?>
-       <input type=double name="x[]" size=1 value="<?echo($x[$s[$i-1]+$k]);?>">
+       <input type=double name="x[]" size=1 value="<?php echo($x[$s[$i-1]+$k]);?>">
     <?php endfor;endfor;?>
     <br>
     <?php for ($i =0; $i <$in; $i++):

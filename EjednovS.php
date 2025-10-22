@@ -2,10 +2,10 @@
 <head>
 <?php 
 
-$a = $_GET['a'];
-$n = $_GET['n'];
-$x = $_GET['x'];
-$aa = $_GET['aa'];
+$a = $_GET['a'] ?? null;
+$n = $_GET['n'] ?? null;
+$x = $_GET['x'] ?? null;
+$aa = $_GET['aa'] ?? null;
 
 function mean($xvar)
   {$s =0; $mez =count($xvar);
@@ -28,7 +28,7 @@ function smodch($xvar)
   return $sp;}
 
 function invchi1($sv)
-  {$chi=FOpen("chi1.txt",r);
+  {$chi=FOpen("chi1.txt", "r");
   $stav=($sv-1)*7;
   FSeek($chi,$stav);
   $inv=FRead($chi,5);
@@ -36,7 +36,7 @@ function invchi1($sv)
   return $inv;}  
 
 function invchi2($sv)
-  {$chi=FOpen("chi4.txt",r);
+  {$chi=FOpen("chi4.txt", "r");
   $stav=($sv-1)*7;
   FSeek($chi,$stav);
   $inv=FRead($chi,5);
@@ -69,7 +69,7 @@ case 0: ?>
 
 <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
   <br> range &nbsp;&nbsp; n: &nbsp;
-  <input type=integer size=1 name=n value="<?echo($n);?>"> 
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> 
        &nbsp; (enter an integer from 3 to 30) &nbsp;&nbsp;
   <input type=submit value="yes"> 
   <input type=hidden name=a value=1>
@@ -82,7 +82,7 @@ if($n<3||$n>30||!(round($n)==$n)): ?>
 
 <form method=get> test level  &nbsp;&nbsp; &alpha; = 0,05 
   <br> range &nbsp;&nbsp; n: &nbsp;
-  <input type=integer size=1 name=n value="<?echo($n);?>"> 
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> 
      &nbsp; (enter an integer from 3 to 30) &nbsp;&nbsp;
   <input type=submit value="yes"> 
   <input type=hidden name=a value=1>
@@ -95,14 +95,14 @@ else: ?>
 
 <form method=get> test level  &nbsp;&nbsp; &alpha; = 0,05 
   <br> range &nbsp;&nbsp; n: &nbsp;
-  <input type=integer size=1 name=n value="<?echo($n);?>">
+  <input type=integer size=1 name=n value="<?php echo($n);?>">
      &nbsp; (enter an integer from 3 to 30) &nbsp;&nbsp;
   <input type=submit value="yes"> 
   <br> random sample from N(&mu;, &sigma;&sup2;) &nbsp;&nbsp; X<sub>1</sub>,...,X<sub><?php echo($n);?></sub>: 
   <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="x[]" size=1 value="<?echo($x[$i]);?>">
+    <input type=double name="x[]" size=1 value="<?php echo($x[$i]);?>">
   <?php endfor;?> 
-  <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub>: &sigma;&sup2; = <input type=double size=1 name=aa value="<?echo($aa);?>"> &nbsp;&nbsp; (enter positive number)<br>
+  <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub>: &sigma;&sup2; = <input type=double size=1 name=aa value="<?php echo($aa);?>"> &nbsp;&nbsp; (enter positive number)<br>
   <input type=submit value="perform the test">
   <input type=hidden name=a value=2>
 </form>
@@ -115,7 +115,7 @@ if($n<3||$n>30||!(round($n)==$n)): ?>
 
 <form method=get> test level  &nbsp;&nbsp; &alpha; = 0,05 
   <br> range &nbsp;&nbsp; n: &nbsp;
-  <input type=integer size=1 name=n value="<?echo($n);?>"> 
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> 
       &nbsp; (enter an integer from 3 to 30) &nbsp;&nbsp;
   <input type=submit value="yes"> 
   <input type=hidden name=a value=1>
@@ -127,14 +127,14 @@ elseif($aa<=0):?>
 
 <form method=get> test level  &nbsp;&nbsp; &alpha; = 0,05 
   <br> range &nbsp;&nbsp; n: &nbsp;
-  <input type=integer size=1 name=n value="<?echo($n);?>"> 
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> 
       &nbsp; (enter an integer from 3 to 30) &nbsp;&nbsp;
   <input type=submit value="yes"> 
   <br> random sample from N(&mu;, &sigma;&sup2;) &nbsp;&nbsp; X<sub>1</sub>,...,X<sub><?php echo($n);?></sub>: 
   <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="x[]" size=1  value="<?echo($x[$i]);?>">
+    <input type=double name="x[]" size=1  value="<?php echo($x[$i]);?>">
   <?php endfor;?> 
-  <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub>: &sigma;&sup2; = <input type=double size=1 name=aa value="<?echo($aa);?>"> &nbsp;&nbsp; (enter positive number)<br>
+  <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub>: &sigma;&sup2; = <input type=double size=1 name=aa value="<?php echo($aa);?>"> &nbsp;&nbsp; (enter positive number)<br>
   <input type=submit value="perform the test">
   <input type=hidden name=a value=2>
 </form>
@@ -146,14 +146,14 @@ else: ?>
 
 <form method=get> test level  &nbsp;&nbsp; &alpha; = 0,05 
   <br> range &nbsp;&nbsp; n: &nbsp;
-  <input type=integer size=1 name=n value="<?echo($n);?>"> 
+  <input type=integer size=1 name=n value="<?php echo($n);?>"> 
      &nbsp; (enter an integer from 3 to 30) &nbsp;&nbsp;
   <input type=submit value="yes"> 
   <br> random sample from N(&mu;, &sigma;&sup2;) &nbsp;&nbsp; X<sub>1</sub>,...,X<sub><?php echo($n);?></sub>: 
   <?php for ($i =0; $i <$n; $i++): ?>
-     <input type=double name="x[]" size=1  value="<?echo($x[$i]);?>">
+     <input type=double name="x[]" size=1  value="<?php echo($x[$i]);?>">
   <?php endfor;?> 
-  <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub>: &sigma;&sup2; = <input type=double size=1 name=aa value="<?echo($aa);?>"> &nbsp;&nbsp; (enter positive number) <br> 
+  <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub>: &sigma;&sup2; = <input type=double size=1 name=aa value="<?php echo($aa);?>"> &nbsp;&nbsp; (enter positive number) <br> 
   <input type=submit value="perform the test">
   <input type=hidden name=a value=2>
 </form>
@@ -224,7 +224,7 @@ echo'aa=',$aa,'& a=1"> Wilcoxon signed-rank test </a>';
   <input type=submit value="new entry">
   <input type=hidden name=a value=0>
 </form>
-<?
+<?php 
 endif;
 default:
 endswitch;?>

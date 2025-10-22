@@ -2,10 +2,10 @@
 <head>
 <?php 
 
-$a = $_GET['a'];
-$ir = $_GET['ir'];
-$is = $_GET['is'];
-$x = $_GET['x'];
+$a = $_GET['a'] ?? null;
+$ir = $_GET['ir'] ?? null;
+$is = $_GET['is'] ?? null;
+$x = $_GET['x'] ?? null;
 
 function sum($xvar)
   {$s =0; $mez =count($xvar);
@@ -13,7 +13,7 @@ function sum($xvar)
   return $s;} 
 
 function invchi3($sv)
-  {$chi=FOpen("chi3.txt",r);
+  {$chi=FOpen("chi3.txt", "r");
   $stav=($sv-1)*7;
   FSeek($chi,$stav);
   $inv=FRead($chi,5);
@@ -50,9 +50,9 @@ case 0: ?>
 
 <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
   <br> rozsah &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=ir value="<?echo($ir);?>"> 
+    <input type=integer size=1 name=ir value="<?php echo($ir);?>"> 
      &nbsp;&nbsp; s: &nbsp;
-    <input type=integer size=1 name=is value="<?echo($is);?>"> 
+    <input type=integer size=1 name=is value="<?php echo($is);?>"> 
     <input type=submit value="ano"> 
     <input type=hidden name=a value=1>
   </form>
@@ -61,9 +61,9 @@ case 0: ?>
 case 1: ?> 
 <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
   <br> rozsah &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=ir value="<?echo($ir);?>"> 
+    <input type=integer size=1 name=ir value="<?php echo($ir);?>"> 
      &nbsp;&nbsp; s: &nbsp;
-    <input type=integer size=1 name=is value="<?echo($is);?>"> 
+    <input type=integer size=1 name=is value="<?php echo($is);?>"> 
     <input type=submit value="ano"> 
     <br> četnosti ve třídách: (zadejte přirozená čísla velikosti alespoň 5) <br>
 <table>
@@ -72,7 +72,7 @@ case 1: ?>
 <?php for ($i =0; $i <$ir; $i++):?>
 <tr>
 <td><?php echo($i+1);?></td><?php for ($j =0; $j <$is; $j++):?>
-   <td><input type=double name="x[]" size=1 value="<?echo($x[$is*$i+$j]);?>"></td>
+   <td><input type=double name="x[]" size=1 value="<?php echo($x[$is*$i+$j]);?>"></td>
 <?php endfor;?><td><?php echo($np[$i]);?></td>
 </tr>
 <?php endfor;?>
@@ -90,9 +90,9 @@ case 1: ?>
 case 2: ?>
 <form method=get> hladina testu &nbsp;&nbsp; &alpha; = 0,05 
   <br> rozsah &nbsp;&nbsp; r: &nbsp; 
-    <input type=integer size=1 name=ir value="<?echo($ir);?>"> 
+    <input type=integer size=1 name=ir value="<?php echo($ir);?>"> 
      &nbsp;&nbsp; s: &nbsp;
-    <input type=integer size=1 name=is value="<?echo($is);?>"> 
+    <input type=integer size=1 name=is value="<?php echo($is);?>"> 
     <input type=submit value="ano"> 
 <?php
 for ($i =0; $i <$ir; $i++):
@@ -119,7 +119,7 @@ endfor;
 <?php for ($i =0; $i <$ir; $i++):?>
 <tr>
 <td><?php echo($i+1);?></td><?php for ($j =0; $j <$is; $j++):?>
-   <td><input type=double name="x[]" size=1 value="<?echo($x[$is*$i+$j]);?>"></td>
+   <td><input type=double name="x[]" size=1 value="<?php echo($x[$is*$i+$j]);?>"></td>
 <?php endfor;?><td><?php echo($np[$i]);?></td>
 </tr>
 <?php endfor;?>

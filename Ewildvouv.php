@@ -2,11 +2,11 @@
 <head>
 <?php 
 
-$a = $_GET['a'];
-$m = $_GET['m'];
-$x = $_GET['x'];
-$n = $_GET['n'];
-$y = $_GET['y'];
+$a = $_GET['a'] ?? null;
+$m = $_GET['m'] ?? null;
+$x = $_GET['x'] ?? null;
+$n = $_GET['n'] ?? null;
+$y = $_GET['y'] ?? null;
 
 function razeni($x)
   {$n=count($x);
@@ -20,7 +20,7 @@ function razeni($x)
   return $p;}
 
 function wildv($sv,$sw)
-  {$wil=FOpen("wildvo1.txt",r);
+  {$wil=FOpen("wildvo1.txt", "r");
   $stav=($sv-4)*110+($sw-4)*4;
   FSeek($wil,$stav);
   $inv=FRead($wil,4);
@@ -54,8 +54,8 @@ case 0: ?>
 
   <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> range &nbsp;&nbsp; m: &nbsp; 
-    <input type=integer size=1 name=m value="<?echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=m value="<?php echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes"> &nbsp; (enter integers from 4 to 30)
     <input type=hidden name=a value=1>
   </form>
@@ -67,8 +67,8 @@ if($m<4||$n<4||$m>30||$n>30||!(round($m)==$m)||!(round($n)==$n)): ?>
   
   <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> range &nbsp;&nbsp; m: &nbsp;
-    <input type=integer size=1 name=m value="<?echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=m value="<?php echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes"> &nbsp; (enter integers from 4 to 30)
     <input type=hidden name=a value=1>
   </form>
@@ -79,15 +79,15 @@ else:?>
 
   <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> range &nbsp;&nbsp; m: &nbsp; 
-    <input type=integer size=1 name=m value="<?echo($m);?>"> &nbsp;&nbsp; n: &nbsp; 
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=m value="<?php echo($m);?>"> &nbsp;&nbsp; n: &nbsp; 
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes"> &nbsp; (enter integers from 4 to 30)
     <br> random sample from continuous distribution &nbsp;&nbsp; X<sub>1</sub>,...,X<sub><?php echo($m);?></sub>: &nbsp; 
     <?php for ($i =0; $i <$m; $i++): ?>
-    <input type=double name="x[]" size=1 value="<?echo($x[$i]);?>"> <?php endfor;?> 
+    <input type=double name="x[]" size=1 value="<?php echo($x[$i]);?>"> <?php endfor;?> 
     <br>  random sample from continuous distribution  &nbsp;&nbsp; Y<sub>1</sub>,...,Y<sub><?php echo($n);?></sub>: &nbsp;
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="y[]" size=1 value="<?echo($y[$i]);?>">
+    <input type=double name="y[]" size=1 value="<?php echo($y[$i]);?>">
     <?php endfor;?> 
     <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub>: the ditribution of X<sub>k</sub> and Y<sub>k</sub> are the same <br>
     <input type=submit value="perform the test">
@@ -102,8 +102,8 @@ case 2:
 if($m<4||$n<4||$m>30||$n>30||!(round($m)==$m)||!(round($n)==$n)): ?>
   <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> range &nbsp;&nbsp; m: &nbsp;  
-    <input type=integer size=1 name=m value="<?echo($m);?>"> &nbsp;&nbsp; n:
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=m value="<?php echo($m);?>"> &nbsp;&nbsp; n:
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes"> &nbsp; (enter integers from 4 to 30)
     <input type=hidden name=a value=1>
   </form>
@@ -114,16 +114,16 @@ else: ?>
 
   <form method=get> test level &nbsp;&nbsp; &alpha; = 0,05 
     <br> range &nbsp;&nbsp; m: &nbsp; 
-    <input type=integer size=1 name=m value="<?echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
-    <input type=integer size=1 name=n value="<?echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=integer size=1 name=m value="<?php echo($m);?>"> &nbsp;&nbsp; n: &nbsp;
+    <input type=integer size=1 name=n value="<?php echo($n);?>"> &nbsp;&nbsp;&nbsp;&nbsp;
     <input type=submit value="yes"> &nbsp; (enter integers from 4 to 30)
     <br>  random sample from continuous distribution  &nbsp;&nbsp; X<sub>1</sub>,...,X<sub><?php echo($m);?></sub>: &nbsp; 
     <?php for ($i =0; $i <$m; $i++): ?>
-    <input type=double name="x[]" size=1 value="<?echo($x[$i]);?>">
+    <input type=double name="x[]" size=1 value="<?php echo($x[$i]);?>">
     <?php endfor;?> 
     <br>  random sample from continuous distribution  &nbsp;&nbsp; Y<sub>1</sub>,...,Y<sub><?php echo($n);?></sub>: &nbsp;
     <?php for ($i =0; $i <$n; $i++): ?>
-    <input type=double name="y[]" size=1 value="<?echo($y[$i]);?>">
+    <input type=double name="y[]" size=1 value="<?php echo($y[$i]);?>">
     <?php endfor;?> 
     <br> null hypothesis &nbsp;&nbsp; H<sub>0</sub>: the distribution of  X<sub>k</sub> and Y<sub>k</sub> are the same <br>
     <input type=submit value="perform the test">
@@ -208,7 +208,7 @@ echo 'a=1"> two-sample F-test (Fischer) </a>';
     <input type=submit value="new entry">
     <input type=hidden name=a value=0>
   </form>
-<?
+<?php 
 endif;
 default:
 endswitch;?>

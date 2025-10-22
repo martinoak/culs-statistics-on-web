@@ -9,7 +9,7 @@
 
            <form method=get>  
              číslo n:  
-             <input type=integer size=1 name=n value="<?echo($n);?>"> 
+             <input type=integer size=1 name=n value="<?php echo($n);?>"> 
              <input type=submit value="ano"> 
              <input type=hidden name=a value=1>
            </form>
@@ -19,7 +19,7 @@
 
            <form method=get>  
              číslo n:  
-             <input type=integer size=1 name=n value="<?echo($n);?>"> 
+             <input type=integer size=1 name=n value="<?php echo($n);?>"> 
              <input type=submit value="ano"> 
              <input type=hidden name=a value=1>
            </form>
