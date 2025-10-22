@@ -1,0 +1,164 @@
+# ===========================
+# PHP Statistics Web Application
+# Public Directory .htaccess Configuration
+# ===========================
+
+# Enable RewriteEngine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Ensure index.php is the default directory index
+    DirectoryIndex index.php index.html
+
+    # Remove trailing slashes (optional, for cleaner URLs)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [R=301,L]
+</IfModule>
+
+# ===========================
+# Security: Deny Access to Sensitive Files
+# ===========================
+
+# Deny access to error_log files
+<FilesMatch "^error_log$">
+    Require all denied
+</FilesMatch>
+
+# Deny access to .htaccess files
+<FilesMatch "^\.htaccess$">
+    Require all denied
+</FilesMatch>
+
+# Deny access to backup files
+<FilesMatch "\.(bak|backup|old|orig|save|swp|tmp)$">
+    Require all denied
+</FilesMatch>
+
+# Deny access to hidden files (starting with .)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# ===========================
+# PHP Configuration
+# ===========================
+
+# Disable directory browsing
+Options -Indexes
+
+# Follow symbolic links
+Options +FollowSymLinks
+
+# Set default charset to UTF-8
+AddDefaultCharset UTF-8
+
+# PHP settings (if allowed by server)
+<IfModule mod_php.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+    php_value error_log ../error_log
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+    php_value memory_limit 128M
+</IfModule>
+
+# ===========================
+# MIME Types
+# ===========================
+
+<IfModule mod_mime.c>
+    # Text files
+    AddType text/html .html .htm .php
+    AddType text/css .css
+    AddType text/javascript .js
+    
+    # Images
+    AddType image/png .png
+    AddType image/jpeg .jpg .jpeg
+    AddType image/gif .gif
+    AddType image/svg+xml .svg
+    
+    # Documents
+    AddType application/pdf .pdf
+    AddType text/plain .txt
+    
+    # LaTeX
+    AddType text/plain .tex
+    
+    # Data files
+    AddType text/plain .txt
+</IfModule>
+
+# ===========================
+# Compression
+# ===========================
+
+<IfModule mod_deflate.c>
+    # Compress HTML, CSS, JavaScript, Text, XML
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE application/xml
+    
+    # Don't compress images (already compressed)
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|svg)$ no-gzip dont-vary
+</IfModule>
+
+# ===========================
+# Browser Caching
+# ===========================
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    
+    # CSS and JavaScript
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType text/javascript "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    
+    # PDFs
+    ExpiresByType application/pdf "access plus 1 month"
+    
+    # Default
+    ExpiresDefault "access plus 1 day"
+</IfModule>
+
+# ===========================
+# Security Headers
+# ===========================
+
+<IfModule mod_headers.c>
+    # Prevent clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevent MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Enable XSS protection
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Referrer policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ===========================
+# Error Pages (Optional)
+# ===========================
+
+# Custom error pages (uncomment and create files if needed)
+# ErrorDocument 404 /404.html
+# ErrorDocument 403 /403.html
+# ErrorDocument 500 /500.html
+

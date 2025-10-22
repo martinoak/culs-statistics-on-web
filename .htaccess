@@ -1,0 +1,102 @@
+# ===========================
+# PHP Statistics Web Application
+# Root .htaccess Configuration
+# ===========================
+
+# Enable RewriteEngine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Redirect all requests to public/ directory
+    # If the request is not for a file or directory in public/
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ public/$1 [L]
+
+    # Redirect root to public/index.php
+    RewriteCond %{REQUEST_URI} ^/$
+    RewriteRule ^$ public/index.php [L]
+</IfModule>
+
+# ===========================
+# Security: Deny Access to Sensitive Files
+# ===========================
+
+# Deny access to error_log files
+<FilesMatch "^error_log$">
+    Require all denied
+</FilesMatch>
+
+# Deny access to .htaccess files
+<FilesMatch "^\.htaccess$">
+    Require all denied
+</FilesMatch>
+
+# Deny access to .git directory and files
+<DirectoryMatch "^\.git">
+    Require all denied
+</DirectoryMatch>
+
+# Deny access to backup files
+<FilesMatch "\.(bak|backup|old|orig|save|swp|tmp)$">
+    Require all denied
+</FilesMatch>
+
+# Deny access to configuration files
+<FilesMatch "^(config|settings)\.(php|ini|json|yml|yaml)$">
+    Require all denied
+</FilesMatch>
+
+# ===========================
+# PHP Configuration
+# ===========================
+
+# Disable directory browsing
+Options -Indexes
+
+# Follow symbolic links
+Options +FollowSymLinks
+
+# Set default charset to UTF-8
+AddDefaultCharset UTF-8
+
+# PHP settings (if allowed by server)
+<IfModule mod_php.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+    php_value error_log error_log
+</IfModule>
+
+# ===========================
+# MIME Types
+# ===========================
+
+<IfModule mod_mime.c>
+    # Text files
+    AddType text/html .html .htm
+    AddType text/css .css
+    AddType text/javascript .js
+    
+    # Images
+    AddType image/png .png
+    AddType image/jpeg .jpg .jpeg
+    AddType image/gif .gif
+    
+    # Documents
+    AddType application/pdf .pdf
+    AddType text/plain .txt
+    
+    # LaTeX
+    AddType text/plain .tex
+</IfModule>
+
+# ===========================
+# Compression (if available)
+# ===========================
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript
+</IfModule>
+

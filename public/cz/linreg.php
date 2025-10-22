@@ -247,7 +247,7 @@ ImageDestroy($graf);
 ?>
 
 <br>
-<img src="../cz/img/linreg.png">
+<img src="inreg.png">
 <br> upozornění: prohlížeč Explorer obvykle nenačítá obnovený obrázek, je třeba provést aktualizaci stránek (na liště nebo klávesnicí F5)
  <?php  endif;?>
      <?php 
