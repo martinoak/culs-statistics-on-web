@@ -242,12 +242,12 @@ ImageString($graf,5,250,(5*$Cy+$Dy),"R^2=".$zrrr,$cerna);
 ImageSetThickness($graf,4);
 ImageLine($graf,$gxr1,$gyr1,$gxr2,$gyr2,$cerna);
 
-ImagePng($graf,"test.png");
+ImagePng($graf,"linreg.png");
 ImageDestroy($graf);
 ?>
 
 <br>
-<img src="test.png">
+<img src="../cz/img/linreg.png">
 <br> upozornění: prohlížeč Explorer obvykle nenačítá obnovený obrázek, je třeba provést aktualizaci stránek (na liště nebo klávesnicí F5)
  <?php  endif;?>
      <?php 

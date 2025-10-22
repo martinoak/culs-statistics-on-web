@@ -96,7 +96,6 @@ $RECYCLE.BIN/
 # Generated Files
 # ===========================
 # Dynamically generated images
-test.png
 *.generated.png
 
 # Compiled LaTeX files (if any)

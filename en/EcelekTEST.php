@@ -4,7 +4,7 @@
 <body bgcolor=navajowhite link=saddlebrown alink=chocolate vlink=darkgoldenrod>
 <table><tr align="center">
 <td><br><h1>HYPOTHESIS TESTING:</h1></td>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="celekTEST.php">(Czech)</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../cz/celekTEST.php">(Czech)</a></td>
 </tr></table>
 
 
@@ -80,10 +80,10 @@
 <table>
 <tr>
 <td> <h3> (texts:) &nbsp;&nbsp;&nbsp;&nbsp;</h3> </td>
-<td> <a href="Evzorce.pdf"> <h3> Concepts and formulas </h3> </a></td>
+<td> <a href="pdf/Evzorce.pdf"> <h3> Concepts and formulas </h3> </a></td>
 </tr>
 <tr><td></td>
-<td><a href="Etabulkyst.pdf"> <h3> Statistical tables </h3> </a></td>
+<td><a href="pdf/Etabulkyst.pdf"> <h3> Statistical tables </h3> </a></td>
 </tr></table>
 
 </body>

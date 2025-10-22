@@ -244,12 +244,12 @@ ImageString($graf,5,250,(5*$Cy+$Dy),"R^2=".$zrrr,$cerna);
 ImageSetThickness($graf,4);
 ImageLine($graf,$gxr1,$gyr1,$gxr2,$gyr2,$cerna);
 
-ImagePng($graf,"test.png");
+ImagePng($graf,"Elinreg.png");
 ImageDestroy($graf);
 ?>
 
 <br>
-<img src="test.png">
+<img src="img/Elinreg.png">
 <br> warning: the browser Explorer usually does not load the restored image, it is necessarry to update the web-site (on the toolbar or by key F5)
  <?php endif;?>
 

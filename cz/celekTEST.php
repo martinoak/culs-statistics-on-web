@@ -4,7 +4,7 @@
 <body bgcolor=navajowhite link=saddlebrown alink=chocolate vlink=darkgoldenrod>
 <table><tr align="center">
 <td><br><h1>TESTOVÁNÍ HYPOTÉZ:</h1></td>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EcelekTEST.php">(anglicky)</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../en/EcelekTEST.php">(anglicky)</a></td>
 </tr></table>
 
 
@@ -79,10 +79,10 @@
 <table>
 <tr>
 <td> <h3> (texty:) &nbsp;&nbsp;&nbsp;&nbsp;</h3> </td>
-<td> <a href="vzorce.pdf"> <h3> Pojmy a vzorce </h3> </a></td>
+<td> <a href="pdf/vzorce.pdf"> <h3> Pojmy a vzorce </h3> </a></td>
 </tr>
 <tr><td></td>
-<td><a href="tabulkyst.pdf"> <h3> Statistické tabulky </h3> </a></td>
+<td><a href="pdf/tabulkyst.pdf"> <h3> Statistické tabulky </h3> </a></td>
 </tr></table>
 
 
