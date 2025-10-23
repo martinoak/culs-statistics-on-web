@@ -65,7 +65,7 @@ function smodch($xvar)
  */
 function invt1($sv)
 {
-    $stud1 = FOpen("../samples/student/stud2.txt", "r");
+    $stud1 = FOpen("../samples/stud/stud2.txt", "r");
     $stav = ($sv - 1) * 7 + 0;
     FSeek($stud1, $stav);
     $inv = FRead($stud1, 5);
@@ -78,7 +78,7 @@ function invt1($sv)
  */
 function invf1($sv, $sw)
 {
-    $fis = FOpen("../samples/fisher/fis1.txt", "r");
+    $fis = FOpen("../samples/fis/fis1.txt", "r");
     $stav = ($sv - 1) * 211 + ($sw - 1) * 7;
     FSeek($fis, $stav);
     $inv = FRead($fis, 6);
@@ -91,7 +91,7 @@ function invf1($sv, $sw)
  */
 function invf2($sv, $sw)
 {
-    $fis = FOpen("../samples/fisher/fis4.txt", "r");
+    $fis = FOpen("../samples/fis/fis4.txt", "r");
     $stav = ($sv - 1) * 151 + ($sw - 1) * 5;
     FSeek($fis, $stav);
     $inv = FRead($fis, 4);

@@ -49,7 +49,7 @@ function razeni1(array $x): array
  */
 function wiljed(int $sv): int
 {
-    $wil = fopen("../samples/wilcoxon/wiljed1.txt", "r");
+    $wil = fopen("../samples/wiljed1.txt", "r");
     $position = ($sv - 6) * 5;
     fseek($wil, $position);
     $inv = fread($wil, 3);

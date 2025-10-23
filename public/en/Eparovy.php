@@ -82,7 +82,7 @@ function cov($xvar, $yvar)
  */
 function invt1($sv)
 {
-    $stud = FOpen("../samples/student/stud2.txt", "r");
+    $stud = FOpen("../samples/stud/stud2.txt", "r");
     $stav = ($sv - 1) * 7;
     FSeek($stud, $stav);
     $inv = FRead($stud, 5);
