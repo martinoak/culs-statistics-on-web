@@ -376,7 +376,7 @@ case 1:
                                                 <?php for ($j = 0; $j < $ip; $j++): ?>
                                                     <input type="number" step="any" name="x[]"
                                                            value="<?php echo htmlspecialchars($xx[$i][$k][$j]); ?>"
-                                                           class="input-field" style="width: 60px;" required>
+                                                           class="input-field" style="width: 80px" required>
                                                 <?php endfor; ?>
                                             </div>
                                         </td>
@@ -571,7 +571,7 @@ case 2:
                                                 <?php for ($j = 0; $j < $ip; $j++): ?>
                                                     <input type="number" step="any" name="x[]"
                                                            value="<?php echo htmlspecialchars($xx[$i][$k][$j]); ?>"
-                                                           class="input-field" style="width: 60px;" required>
+                                                           class="input-field" style="width: 80px" required>
                                                 <?php endfor; ?>
                                             </div>
                                         </td>
