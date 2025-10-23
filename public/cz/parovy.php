@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
@@ -101,119 +101,7 @@ function zaokr($cislo, $des)
 }
 
 ?>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
-
-        * {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                radial-gradient(at 20% 30%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
-                radial-gradient(at 80% 70%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(236, 72, 153, 0.1) 0px, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(148, 163, 184, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        .input-field {
-            background: rgba(51, 65, 85, 0.5);
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            color: white;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .input-field:focus {
-            outline: none;
-            border-color: rgba(59, 130, 246, 0.5);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 0.5rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
-        }
-
-        .btn-secondary {
-            background: rgba(51, 65, 85, 0.5);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: rgba(59, 130, 246, 0.5);
-        }
-
-        .result-box {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 0.75rem;
-            padding: 1rem;
-        }
-
-        .error-box {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-radius: 0.75rem;
-            padding: 1rem;
-        }
-
-        .link-button {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(51, 65, 85, 0.5);
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            border-radius: 0.5rem;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .link-button:hover {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-2px);
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/style.css?v=<?= filemtime('../assets/css/style.css') ?>">
 
     <script>
         function otev() {
@@ -243,7 +131,7 @@ function zaokr($cislo, $des)
                     </h1>
                 </div>
                 <div class="flex gap-2">
-                    <button onmouseover="otev()" class="btn-secondary text-sm">
+                    <button onclick="otev()" class="btn-secondary text-sm">
                         📐 Vzorce
                     </button>
                     <button onmouseover="zav()" class="btn-secondary text-sm">
@@ -263,7 +151,7 @@ switch ($a):
             <form method="get" class="space-y-4">
                 <div>
                     <label class="block text-slate-300 mb-2">
-                        Hladina testu: <strong class="text-white">α = 0,05</strong>
+                        Hladina testu: <strong class="text-white">? = 0,05</strong>
                     </label>
                 </div>
                 <div>
@@ -292,7 +180,7 @@ switch ($a):
             <form method="get" class="space-y-4">
                 <div>
                     <label class="block text-slate-300 mb-2">
-                        Hladina testu: <strong class="text-white">α = 0,05</strong>
+                        Hladina testu: <strong class="text-white">? = 0,05</strong>
                     </label>
                 </div>
                 <div>
@@ -322,7 +210,7 @@ switch ($a):
             <form method="get" class="space-y-6">
                 <div>
                     <label class="block text-slate-300 mb-2">
-                        Hladina testu: <strong class="text-white">α = 0,05</strong>
+                        Hladina testu: <strong class="text-white">? = 0,05</strong>
                     </label>
                 </div>
 
@@ -392,7 +280,7 @@ switch ($a):
             <form method="get" class="space-y-4">
                 <div>
                     <label class="block text-slate-300 mb-2">
-                        Hladina testu: <strong class="text-white">α = 0,05</strong>
+                        Hladina testu: <strong class="text-white">? = 0,05</strong>
                     </label>
                 </div>
                 <div>
@@ -422,7 +310,7 @@ switch ($a):
             <form method="get" class="space-y-6">
                 <div>
                     <label class="block text-slate-300 mb-2">
-                        Hladina testu: <strong class="text-white">α = 0,05</strong>
+                        Hladina testu: <strong class="text-white">? = 0,05</strong>
                     </label>
                 </div>
 
@@ -521,14 +409,14 @@ switch ($a):
                 ?>
 
                 <div class="result-box">
-                    <h3 class="text-white font-semibold mb-3">📈 Výběrové charakteristiky rozdílů:</h3>
+                    <h3 class="text-white font-semibold mb-3">📊 Výběrové charakteristiky rozdílů:</h3>
                     <div class="grid md:grid-cols-2 gap-4 text-blue-100">
                         <div>
                             <span class="text-slate-300"><span style="text-decoration: overline">Z</span> =</span>
                             <span class="font-mono text-lg ml-2"><?php echo($zm);?></span>
                         </div>
                         <div>
-                            <span class="text-slate-300">S<sub>Z</sub>² =</span>
+                            <span class="text-slate-300">S<sub>Z</sub>2 =</span>
                             <span class="font-mono text-lg ml-2"><?php echo($zso);?></span>
                         </div>
                     </div>
@@ -551,7 +439,7 @@ switch ($a):
                 ?>
 
                     <div class="result-box">
-                        <h3 class="text-white font-semibold mb-3">🔬 Testová statistika:</h3>
+                        <h3 class="text-white font-semibold mb-3">📊 Testová statistika:</h3>
                         <div class="grid md:grid-cols-2 gap-4 text-blue-100">
                             <div>
                                 <span class="text-slate-300">T =</span>
@@ -572,14 +460,14 @@ switch ($a):
                                     <span class="font-mono">|T| ≥ t<sub><?php echo($sv)?></sub>(0.975)</span>
                                 </p>
                                 <p class="text-lg font-semibold text-red-300">
-                                    → Hypotézu H<sub>0</sub> : μ<sub>1</sub> = μ<sub>2</sub> <strong>zamítneme</strong>
+                                    ✗ Hypotézu H<sub>0</sub> : μ<sub>1</sub> = μ<sub>2</sub> <strong>zamítneme</strong>
                                 </p>
                             <?php else: ?>
                                 <p class="mb-2">
                                     <span class="font-mono">|T| &lt; t<sub><?php echo($sv)?></sub>(0.975)</span>
                                 </p>
                                 <p class="text-lg font-semibold text-green-300">
-                                    → Hypotézu H<sub>0</sub> : μ<sub>1</sub> = μ<sub>2</sub> <strong>nezamítneme</strong>
+                                    ✓ Hypotézu H<sub>0</sub> : μ<sub>1</sub> = μ<sub>2</sub> <strong>nezamítneme</strong>
                                 </p>
                             <?php endif; ?>
                         </div>

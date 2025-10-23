@@ -71,154 +71,7 @@ function zaokr(float $cislo, int $des): float
 }
 
 ?>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
-
-        * {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                radial-gradient(at 20% 30%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
-                radial-gradient(at 80% 70%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(236, 72, 153, 0.1) 0px, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(148, 163, 184, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        .input-field {
-            background: rgba(51, 65, 85, 0.5);
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            color: white;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-            width: 80px;
-        }
-
-        .input-field:focus {
-            outline: none;
-            border-color: rgba(59, 130, 246, 0.5);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 0.5rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
-        }
-
-        .btn-secondary {
-            background: rgba(51, 65, 85, 0.5);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: rgba(59, 130, 246, 0.5);
-        }
-
-        .result-box {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        .error-box {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-radius: 0.75rem;
-            padding: 1rem;
-        }
-
-        .success-box {
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 0.75rem;
-            padding: 1rem;
-        }
-
-        .link-button {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(51, 65, 85, 0.5);
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            border-radius: 0.5rem;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .link-button:hover {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .data-table {
-            width: 100%;
-            overflow-x: auto;
-        }
-
-        .data-table table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .data-table td {
-            padding: 0.5rem;
-            text-align: center;
-            color: #cbd5e1;
-        }
-
-        .data-table .rank {
-            color: #cbd5e1;
-            font-weight: 600;
-        }
-
-        .data-value {
-            color: #cbd5e1;
-            font-weight: 600;
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/style.css?v=<?= filemtime('../assets/css/style.css') ?>">
 
     <script>
         function otev() {
@@ -591,9 +444,64 @@ case 3:
     $chinv = invchi3(($in - 1));
 ?>
 
+        <!-- Step 3: Data Input Form (Always Visible) -->
+        <div class="glass-card rounded-2xl p-6 md:p-8 mb-6">
+            <form method="get" class="space-y-4">
+                <div>
+                    <label class="block text-slate-300 mb-2">
+                        Hladina testu: <strong class="text-white">α = 0,05</strong>
+                    </label>
+                </div>
+                <div>
+                    <label class="block text-slate-300 mb-2">
+                        Počet tříd <em>r</em>:
+                    </label>
+                    <input type="number" name="in" value="<?php echo htmlspecialchars($in); ?>"
+                           class="input-field" min="3" max="10" required>
+                </div>
+                <div>
+                    <label class="block text-slate-300 mb-2">
+                        Rozsah jednotlivých tříd n<sub>1</sub>, ..., n<sub><?php echo $in; ?></sub>:
+                    </label>
+                    <div class="flex flex-wrap gap-2">
+                        <?php for ($i = 0; $i < $in; $i++): ?>
+                            <input type="number" name="n[]" value="<?php echo htmlspecialchars($n[$i]); ?>"
+                                   class="input-field" min="2" max="10" required>
+                        <?php endfor; ?>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <p class="text-slate-300 mb-3">
+                        Náhodné výběry z r = <?php echo $in; ?> spojitých rozdělení
+                    </p>
+                    <?php for ($i = 0; $i < $in; $i++): ?>
+                        <div class="mb-3">
+                            <label class="block text-slate-300 mb-2">
+                                X<sub><?php echo ($i + 1); ?>,1</sub>, ..., X<sub><?php echo ($i + 1); ?>,<?php echo $n[$i]; ?></sub>:
+                            </label>
+                            <div class="flex flex-wrap gap-2">
+                                <?php for ($k = 0; $k < $n[$i]; $k++): ?>
+                                    <input type="number" step="any" name="x[]"
+                                           value="<?php echo htmlspecialchars($x[$s[$i - 1] + $k]); ?>"
+                                           class="input-field" required>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
+                    <?php endfor; ?>
+                </div>
+                <div class="mt-4">
+                    <p class="text-slate-300">
+                        Nulová hypotéza H<sub>0</sub>: všechna rozdělení jsou stejná
+                    </p>
+                </div>
+                <button type="submit" class="btn-primary">Proveďte test</button>
+                <input type="hidden" name="a" value="3">
+            </form>
+        </div>
+
         <!-- Results Display -->
-        <div class="glass-card rounded-2xl p-6 md:p-8">
-            <div class="result-box">
+        <div class="glass-card rounded-2xl p-6 md:p-8 mb-6">
+            <div class="result-box mb-6">
                 <h3 class="text-lg font-bold text-white mb-3">📊 Výběr X s pořadími:</h3>
                 <div class="data-table">
                     <?php for ($i = 0; $i < $in; $i++): ?>
@@ -617,7 +525,7 @@ case 3:
                 </div>
             </div>
 
-            <div class="result-box">
+            <div class="result-box mb-6">
                 <h3 class="text-lg font-bold text-white mb-3">🔍 Testová statistika:</h3>
                 <div class="text-slate-300 space-y-2">
                     <p>Q = <span class="data-value"><?php echo $zq; ?></span></p>
@@ -626,19 +534,19 @@ case 3:
             </div>
 
 <?php if ($q >= $chinv): ?>
-            <div class="success-box">
+            <div class="success-box mb-6">
                 <p class="text-green-300">✓ Q ≥ χ²<sub><?php echo ($in - 1); ?></sub>(0.95)</p>
                 <p class="text-green-300 mt-2">→ Hypotézu H<sub>0</sub>: stejné rozdělení <strong>zamítneme</strong></p>
             </div>
 <?php else: ?>
-            <div class="result-box">
+            <div class="result-box mb-6">
                 <p class="text-slate-300">Q < χ²<sub><?php echo ($in - 1); ?></sub>(0.95)</p>
                 <p class="text-slate-300 mt-2">→ Hypotézu H<sub>0</sub>: stejné rozdělení <strong>nezamítneme</strong></p>
             </div>
 <?php endif; ?>
 
             <!-- Related Tests -->
-            <div class="mt-6">
+            <div>
                 <p class="text-slate-400 text-sm mb-3">🔗 Související testy se stejnými daty:</p>
                 <div class="flex flex-wrap gap-3">
                     <a href="anova.php?in=<?php echo $in; ?>&<?php
@@ -652,12 +560,16 @@ case 3:
                             }
                         }
                     ?>a=2" class="link-button">Jednoduché třídění (ANOVA)</a>
-                    <form method="get" class="inline-block">
-                        <button type="submit" class="btn-secondary">Nové zadání</button>
-                        <input type="hidden" name="a" value="0">
-                    </form>
                 </div>
             </div>
+        </div>
+
+        <!-- New Entry Button -->
+        <div class="glass-card rounded-2xl p-6 text-center">
+            <form method="get">
+                <button type="submit" class="btn-primary">🔄 Nové zadání</button>
+                <input type="hidden" name="a" value="0">
+            </form>
         </div>
 
 <?php

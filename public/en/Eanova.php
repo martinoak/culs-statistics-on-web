@@ -449,7 +449,7 @@ case 2:
                         <span class="text-sm text-slate-400">or α<sub>1</sub> = ... = α<sub><?php echo $in; ?></sub> = 0</span>
                     </p>
                 </div>
-                <button type="submit" class="btn-primary">Perform the test</button>
+                <button type="submit" class="btn-primary">Run the test</button>
                 <input type="hidden" name="a" value="3">
             </form>
         </div>
@@ -570,28 +570,86 @@ case 3:
     $zss = zaokr($ss, 4);
 ?>
 
-        <!-- Results Display -->
-        <div class="glass-card rounded-2xl p-6 md:p-8">
-            <div class="result-box">
-                <h3 class="text-lg font-bold text-white mb-3">📊 Analysis Results</h3>
-                <div class="text-slate-300 space-y-2">
-                    <p><span style="text-decoration: overline">X</span> = <span class="data-value"><?php echo $zmmm; ?></span></p>
-                    <div class="flex flex-wrap gap-4">
+        <!-- Step 3: Data Input with Results -->
+        <div class="glass-card rounded-2xl p-6 md:p-8 mb-6">
+            <form method="get" class="space-y-4">
+                <div>
+                    <label class="block text-slate-300 mb-2">
+                        Test level: <strong class="text-white">α = 0.05</strong>
+                    </label>
+                </div>
+                <div>
+                    <label class="block text-slate-300 mb-2">
+                        Number of categories <em>r</em>:
+                    </label>
+                    <input type="number" name="in" value="<?php echo htmlspecialchars($in); ?>"
+                           class="input-field" min="3" max="10" required>
+                </div>
+                <div>
+                    <label class="block text-slate-300 mb-2">
+                        Range of categories n<sub>1</sub>, ..., n<sub><?php echo $in; ?></sub>:
+                    </label>
+                    <div class="flex flex-wrap gap-2">
                         <?php for ($i = 0; $i < $in; $i++): ?>
-                            <span><span style="text-decoration: overline">X</span><sub><?php echo ($i + 1); ?></sub> = <span class="data-value"><?php echo $zmmx[$i]; ?></span></span>
+                            <input type="number" name="n[]" value="<?php echo htmlspecialchars($n[$i]); ?>"
+                                   class="input-field" min="2" max="10" required>
                         <?php endfor; ?>
                     </div>
-                    <p class="mt-4">S<sub>A</sub> = <span class="data-value"><?php echo $zsa; ?></span> &nbsp;&nbsp; f<sub>A</sub> = <span class="data-value"><?php echo $fa; ?></span></p>
-                    <p>S<sub>e</sub> = <span class="data-value"><?php echo $zse; ?></span> &nbsp;&nbsp; f<sub>e</sub> = <span class="data-value"><?php echo $fe; ?></span></p>
-                    <p>s² = <span class="data-value"><?php echo $zss; ?></span></p>
-                    <p>S<sub>T</sub> = <span class="data-value"><?php echo $zst; ?></span> &nbsp;&nbsp; f<sub>T</sub> = <span class="data-value"><?php echo $ft; ?></span></p>
                 </div>
-            </div>
+                <div class="mt-4">
+                    <p class="text-slate-300 mb-3">
+                        Random samples from N(μ<sub>1</sub>, σ²), ..., N(μ<sub><?php echo $in; ?></sub>, σ²)<br>
+                        <span class="text-sm text-slate-400">
+                            μ<sub>1</sub> = μ + α<sub>1</sub>, ..., μ<sub><?php echo $in; ?></sub> = μ + α<sub><?php echo $in; ?></sub>, Σα<sub>k</sub> = 0
+                        </span>
+                    </p>
+                    <?php for ($i = 0; $i < $in; $i++): ?>
+                        <div class="mb-3">
+                            <label class="block text-slate-300 mb-2">
+                                X<sub><?php echo ($i + 1); ?>,1</sub>, ..., X<sub><?php echo ($i + 1); ?>,<?php echo $n[$i]; ?></sub>:
+                            </label>
+                            <div class="flex flex-wrap gap-2">
+                                <?php for ($k = 0; $k < $n[$i]; $k++): ?>
+                                    <input type="number" step="any" name="x[]"
+                                           value="<?php echo htmlspecialchars($x[$s[$i - 1] + $k]); ?>"
+                                           class="input-field" required>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
+                    <?php endfor; ?>
+                </div>
+                <div class="mt-4">
+                    <p class="text-slate-300">
+                        Null hypothesis H<sub>0</sub>: μ<sub>1</sub> = ... = μ<sub><?php echo $in; ?></sub><br>
+                        <span class="text-sm text-slate-400">or α<sub>1</sub> = ... = α<sub><?php echo $in; ?></sub> = 0</span>
+                    </p>
+                </div>
+                <button type="submit" class="btn-primary">Run the test</button>
+                <input type="hidden" name="a" value="3">
+            </form>
+
+            <!-- Results Section -->
+            <div class="mt-6">
+                <div class="result-box">
+                    <h3 class="text-lg font-bold text-white mb-3">📊 Analysis Results</h3>
+                    <div class="text-slate-300 space-y-2">
+                        <p><span style="text-decoration: overline">X</span> = <span class="data-value"><?php echo $zmmm; ?></span></p>
+                        <div class="flex flex-wrap gap-4">
+                            <?php for ($i = 0; $i < $in; $i++): ?>
+                                <span><span style="text-decoration: overline">X</span><sub><?php echo ($i + 1); ?></sub> = <span class="data-value"><?php echo $zmmx[$i]; ?></span></span>
+                            <?php endfor; ?>
+                        </div>
+                        <p class="mt-4">S<sub>A</sub> = <span class="data-value"><?php echo $zsa; ?></span> &nbsp;&nbsp; f<sub>A</sub> = <span class="data-value"><?php echo $fa; ?></span></p>
+                        <p>S<sub>e</sub> = <span class="data-value"><?php echo $zse; ?></span> &nbsp;&nbsp; f<sub>e</sub> = <span class="data-value"><?php echo $fe; ?></span></p>
+                        <p>s² = <span class="data-value"><?php echo $zss; ?></span></p>
+                        <p>S<sub>T</sub> = <span class="data-value"><?php echo $zst; ?></span> &nbsp;&nbsp; f<sub>T</sub> = <span class="data-value"><?php echo $ft; ?></span></p>
+                    </div>
+                </div>
 
 <?php if ($ss == 0): ?>
-            <div class="error-box mt-4">
-                <p class="text-red-300">⚠️ Residual sum of squares equals 0, this test cannot be used.</p>
-            </div>
+                <div class="error-box mt-4">
+                    <p class="text-red-300">⚠️ Residual sum of squares equals 0, this test cannot be used.</p>
+                </div>
 <?php else:
     $ff = $sa / $fa / $ss;
     $zf = zaokr($ff, 3);
@@ -607,62 +665,67 @@ case 3:
         }
     }
 ?>
-            <div class="result-box mt-4">
-                <div class="text-slate-300 space-y-2">
-                    <p>F = <span class="data-value"><?php echo $zf; ?></span></p>
-                    <p>F<sub><?php echo $fa . "," . $fe; ?></sub>(0.95) = <span class="data-value"><?php echo $finv; ?></span></p>
+                <div class="result-box mt-4">
+                    <div class="text-slate-300 space-y-2">
+                        <p>F = <span class="data-value"><?php echo $zf; ?></span></p>
+                        <p>F<sub><?php echo $fa . "," . $fe; ?></sub>(0.95) = <span class="data-value"><?php echo $finv; ?></span></p>
+                    </div>
                 </div>
-            </div>
 
 <?php if ($ff >= $finv): ?>
-            <div class="success-box mt-4">
-                <p class="text-green-300">✓ F ≥ F<sub><?php echo $fa . "," . $fe; ?></sub>(0.95)</p>
-                <p class="text-green-300 mt-2">→ Hypothesis H<sub>0</sub>: α<sub>1</sub> = ... = α<sub><?php echo $in; ?></sub> = 0 is <strong>rejected</strong></p>
-            </div>
-
-            <div class="result-box mt-4">
-                <h4 class="text-lg font-bold text-white mb-3">🔍 Post hoc test (Scheffé method):</h4>
-                <div class="text-slate-300 space-y-1">
-                    <?php for ($i = 0; $i < $in; $i++):
-                        for ($k = $i + 1; $k < $in; $k++):
-                            if ($roz[$i][$k] > $shef[$i][$k]): ?>
-                                <p>|<span style="text-decoration: overline">X</span><sub><?php echo ($i + 1); ?></sub> - <span style="text-decoration: overline">X</span><sub><?php echo ($k + 1); ?></sub>| = <?php echo $zroz[$i][$k] . " > " . $zshef[$i][$k]; ?> → <span class="text-green-300 font-semibold">are different</span></p>
-                            <?php else: ?>
-                                <p>|<span style="text-decoration: overline">X</span><sub><?php echo ($i + 1); ?></sub> - <span style="text-decoration: overline">X</span><sub><?php echo ($k + 1); ?></sub>| = <?php echo $zroz[$i][$k] . " ≤ " . $zshef[$i][$k]; ?> → are not different</p>
-                            <?php endif;
-                        endfor;
-                    endfor; ?>
+                <div class="success-box mt-4">
+                    <p class="text-green-300">✓ F ≥ F<sub><?php echo $fa . "," . $fe; ?></sub>(0.95)</p>
+                    <p class="text-green-300 mt-2">→ Hypothesis H<sub>0</sub>: α<sub>1</sub> = ... = α<sub><?php echo $in; ?></sub> = 0 is <strong>rejected</strong></p>
                 </div>
-            </div>
+
+                <div class="result-box mt-4">
+                    <h4 class="text-lg font-bold text-white mb-3">🔍 Post hoc test (Scheffé method):</h4>
+                    <div class="text-slate-300 space-y-1">
+                        <?php for ($i = 0; $i < $in; $i++):
+                            for ($k = $i + 1; $k < $in; $k++):
+                                if ($roz[$i][$k] > $shef[$i][$k]): ?>
+                                    <p>|<span style="text-decoration: overline">X</span><sub><?php echo ($i + 1); ?></sub> - <span style="text-decoration: overline">X</span><sub><?php echo ($k + 1); ?></sub>| = <?php echo $zroz[$i][$k] . " > " . $zshef[$i][$k]; ?> → <span class="text-green-300 font-semibold">are different</span></p>
+                                <?php else: ?>
+                                    <p>|<span style="text-decoration: overline">X</span><sub><?php echo ($i + 1); ?></sub> - <span style="text-decoration: overline">X</span><sub><?php echo ($k + 1); ?></sub>| = <?php echo $zroz[$i][$k] . " ≤ " . $zshef[$i][$k]; ?> → are not different</p>
+                                <?php endif;
+                            endfor;
+                        endfor; ?>
+                    </div>
+                </div>
 <?php else: ?>
-            <div class="result-box mt-4">
-                <p class="text-slate-300">F < F<sub><?php echo $fa . "," . $fe; ?></sub>(0.95)</p>
-                <p class="text-slate-300 mt-2">→ Hypothesis H<sub>0</sub>: α<sub>1</sub> = ... = α<sub><?php echo $in; ?></sub> = 0 is <strong>not rejected</strong></p>
-            </div>
-<?php endif; ?>
-<?php endif; ?>
-
-            <!-- Related Tests -->
-            <div class="mt-6">
-                <p class="text-slate-400 text-sm mb-3">🔗 Related tests with the same data:</p>
-                <div class="flex flex-wrap gap-3">
-                    <a href="Ekruskalwal.php?in=<?php echo $in; ?>&<?php
-                        for ($i = 0; $i < $in; $i++) {
-                            echo 'n%5B%5D=' . $n[$i] . '&';
-                            $sss[$i + 1] = $sss[$i] + $n[$i];
-                        }
-                        for ($j = 0; $j < $in; $j++) {
-                            for ($k = 0; $k < $n[$j]; $k++) {
-                                echo 'x%5B%5D=' . $x[$sss[$j] + $k] . '&';
-                            }
-                        }
-                    ?>a=2" class="link-button">Kruskal-Wallis test</a>
-                    <form method="get" class="inline-block">
-                        <button type="submit" class="btn-secondary">New entry</button>
-                        <input type="hidden" name="a" value="0">
-                    </form>
+                <div class="result-box mt-4">
+                    <p class="text-slate-300">F < F<sub><?php echo $fa . "," . $fe; ?></sub>(0.95)</p>
+                    <p class="text-slate-300 mt-2">→ Hypothesis H<sub>0</sub>: α<sub>1</sub> = ... = α<sub><?php echo $in; ?></sub> = 0 is <strong>not rejected</strong></p>
                 </div>
+<?php endif; ?>
+<?php endif; ?>
             </div>
+        </div>
+
+        <!-- Related Tests -->
+        <div class="glass-card rounded-2xl p-6 md:p-8 mb-6">
+            <h3 class="text-white font-semibold mb-4">🔗 Related tests with the same data:</h3>
+            <div class="flex flex-wrap gap-3">
+                <a href="Ekruskalwal.php?in=<?php echo $in; ?>&<?php
+                    for ($i = 0; $i < $in; $i++) {
+                        echo 'n%5B%5D=' . $n[$i] . '&';
+                        $sss[$i + 1] = $sss[$i] + $n[$i];
+                    }
+                    for ($j = 0; $j < $in; $j++) {
+                        for ($k = 0; $k < $n[$j]; $k++) {
+                            echo 'x%5B%5D=' . $x[$sss[$j] + $k] . '&';
+                        }
+                    }
+                ?>a=2" class="link-button">Kruskal-Wallis test</a>
+            </div>
+        </div>
+
+        <!-- New Entry Button -->
+        <div class="glass-card rounded-2xl p-6 text-center">
+            <form method="get">
+                <button type="submit" class="btn-primary">🔄 New entry</button>
+                <input type="hidden" name="a" value="0">
+            </form>
         </div>
 
 <?php

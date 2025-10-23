@@ -131,7 +131,7 @@ N(&mu;<sub><?php echo($ir.",1");?></sub>, &sigma;&sup2;) ,...,  N(&mu;<sub><?php
            H<sub>0</sub>: &beta;<sub>1</sub> = ... = &beta;<sub><?php echo($is);?></sub> = 0
     <br>
 
-    <input type=submit value="perform the test"> 
+    <input type=submit value="Run the test">
     <input type=hidden name=a value=2>
     </form>
 <?php 
@@ -200,7 +200,7 @@ N(&mu;<sub><?php echo($ir.",1");?></sub>, &sigma;&sup2;) ,...,  N(&mu;<sub><?php
               $xx[$i][$k][$j]=$x[$is*$ip*$i+$k*$ip+$j];
     endfor;endfor;endfor;?>
     <br> 
- <input type=submit value="perform the test">     
+ <input type=submit value="Run the test">
  <input type=hidden name=a value=2>
     </form>
 

@@ -236,7 +236,7 @@ switch($a):
 case 0: ?>
 
         <!-- Step 1: Parameters Input -->
-        <div class="glass-card rounded-2xl p-6 md:p-8">
+        <div class="glass-card rounded-2xl p-6 md:p-8 mb-6">
             <form method="get" class="space-y-4">
                 <div>
                     <label class="block text-slate-300 mb-2">
@@ -282,7 +282,7 @@ case 1:
         !(round($ir) == $ir) || !(round($is) == $is) || !(round($ip) == $ip)): ?>
 
         <!-- Error: Invalid Parameters -->
-        <div class="glass-card rounded-2xl p-6 md:p-8">
+        <div class="glass-card rounded-2xl p-6 md:p-8 mb-6">
             <div class="error-box mb-4">
                 <p class="text-red-300">⚠️ Nezadali jste požadovaná celá čísla, opravte prosím.</p>
             </div>
@@ -322,7 +322,7 @@ case 1:
 ?>
 
         <!-- Step 2: Data Input -->
-        <div class="glass-card rounded-2xl p-6 md:p-8">
+        <div class="glass-card rounded-2xl p-6 md:p-8 mb-6">
             <form method="get" class="space-y-4">
                 <div>
                     <label class="block text-slate-300 mb-2">
@@ -408,7 +408,7 @@ case 2:
         !(round($ir) == $ir) || !(round($is) == $is) || !(round($ip) == $ip)): ?>
 
         <!-- Error: Invalid Parameters -->
-        <div class="glass-card rounded-2xl p-6 md:p-8">
+        <div class="glass-card rounded-2xl p-6 md:p-8 mb-6">
             <div class="error-box mb-4">
                 <p class="text-red-300">⚠️ Nezadali jste požadovaná celá čísla, opravte prosím.</p>
             </div>
@@ -510,7 +510,7 @@ case 2:
 ?>
 
         <!-- Results Display -->
-        <div class="glass-card rounded-2xl p-6 md:p-8">
+        <div class="glass-card rounded-2xl p-6 md:p-8 mb-6">
             <form method="get" class="space-y-4 mb-6">
                 <div>
                     <label class="block text-slate-300 mb-2">
@@ -725,12 +725,16 @@ case 2:
                             }
                         }
                     ?>a=1" class="link-button">Dvojné třídění (ANOVA) bez interakcí</a>
-                    <form method="get" class="inline-block">
-                        <button type="submit" class="btn-secondary">Nové zadání</button>
-                        <input type="hidden" name="a" value="0">
-                    </form>
                 </div>
             </div>
+        </div>
+
+        <!-- New Entry Button -->
+        <div class="glass-card rounded-2xl p-6 text-center">
+            <form method="get">
+                <button type="submit" class="btn-primary">🔄 Nové zadání</button>
+                <input type="hidden" name="a" value="0">
+            </form>
         </div>
 
 <?php

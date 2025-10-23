@@ -242,7 +242,7 @@ switch($a):
 case 0: ?>
 
         <!-- Step 1: Parameters Input -->
-        <div class="glass-card rounded-2xl p-6 md:p-8">
+        <div class="glass-card rounded-2xl p-6 md:p-8 mb-6">
             <form method="get" class="space-y-4">
                 <div>
                     <label class="block text-slate-300 mb-2">
@@ -288,7 +288,7 @@ case 1:
         !(round($ir) == $ir) || !(round($is) == $is) || !(round($ip) == $ip)): ?>
 
         <!-- Error: Invalid Parameters -->
-        <div class="glass-card rounded-2xl p-6 md:p-8">
+        <div class="glass-card rounded-2xl p-6 md:p-8 mb-6">
             <div class="error-box mb-4">
                 <p class="text-red-300">⚠️ You did not enter the required integers, please correct.</p>
             </div>
@@ -328,7 +328,7 @@ case 1:
 ?>
 
         <!-- Step 2: Data Input -->
-        <div class="glass-card rounded-2xl p-6 md:p-8">
+        <div class="glass-card rounded-2xl p-6 md:p-8 mb-6">
             <form method="get" class="space-y-4">
                 <div>
                     <label class="block text-slate-300 mb-2">
@@ -355,17 +355,17 @@ case 1:
 
                 <div class="mt-4">
                     <p class="text-slate-300 mb-2">Random samples from:</p>
-                    <div class="text-slate-400 text-sm space-y-1">
+                    <div class="flex space-x-8 text-slate-400">
                         <p>N(μ<sub>1,1</sub>, σ²), ..., N(μ<sub>1,<?php echo $is; ?></sub>, σ²)</p>
                         <p>...</p>
                         <p>N(μ<sub><?php echo $ir; ?>,1</sub>, σ²), ..., N(μ<sub><?php echo $ir; ?>,<?php echo $is; ?></sub>, σ²)</p>
                     </div>
-                    <div class="text-slate-400 text-sm mt-2 space-y-1">
+                    <div class="flex space-x-8 text-slate-400 mt-2">
                         <p>μ<sub>1,1</sub> = μ + α<sub>1</sub> + β<sub>1</sub>, ..., μ<sub>1,<?php echo $is; ?></sub> = μ + α<sub>1</sub> + β<sub><?php echo $is; ?></sub></p>
                         <p>...</p>
                         <p>μ<sub><?php echo $ir; ?>,1</sub> = μ + α<sub><?php echo $ir; ?></sub> + β<sub>1</sub>, ..., μ<sub><?php echo $ir; ?>,<?php echo $is; ?></sub> = μ + α<sub><?php echo $ir; ?></sub> + β<sub><?php echo $is; ?></sub></p>
-                        <p class="mt-2">Σα<sub>k</sub> = 0, Σβ<sub>k</sub> = 0</p>
                     </div>
+                    <p class="text-slate-400 mt-2">Σα<sub>k</sub> = 0, Σβ<sub>k</sub> = 0</p>
                 </div>
 
                 <div class="mt-4 space-y-3">
@@ -395,7 +395,7 @@ case 1:
                     <p class="text-slate-400 text-sm">H<sub>0</sub>: β<sub>1</sub> = ... = β<sub><?php echo $is; ?></sub> = 0</p>
                 </div>
 
-                <button type="submit" class="btn-primary">Perform the test</button>
+                <button type="submit" class="btn-primary">Run the test</button>
                 <input type="hidden" name="a" value="2">
             </form>
         </div>
@@ -409,7 +409,7 @@ case 2:
         !(round($ir) == $ir) || !(round($is) == $is) || !(round($ip) == $ip)): ?>
 
         <!-- Error: Invalid Parameters -->
-        <div class="glass-card rounded-2xl p-6 md:p-8">
+        <div class="glass-card rounded-2xl p-6 md:p-8 mb-6">
             <div class="error-box mb-4">
                 <p class="text-red-300">⚠️ You did not enter the required integers, please correct.</p>
             </div>
@@ -497,7 +497,7 @@ case 2:
 ?>
 
         <!-- Results Display -->
-        <div class="glass-card rounded-2xl p-6 md:p-8">
+        <div class="glass-card rounded-2xl p-6 md:p-8 mb-6">
             <form method="get" class="space-y-4 mb-6">
                 <div>
                     <label class="block text-slate-300 mb-2">
@@ -524,12 +524,12 @@ case 2:
 
                 <div class="mt-4">
                     <p class="text-slate-300 mb-2">Random samples from:</p>
-                    <div class="flex space-x-4 text-slate-400">
+                    <div class="flex space-x-8 text-slate-400">
                         <p>N(μ<sub>1,1</sub>, σ²), ..., N(μ<sub>1,<?php echo $is; ?></sub>, σ²)</p>
                         <p>...</p>
                         <p>N(μ<sub><?php echo $ir; ?>,1</sub>, σ²), ..., N(μ<sub><?php echo $ir; ?>,<?php echo $is; ?></sub>, σ²)</p>
                     </div>
-                    <div class="flex space-x-4 text-slate-400 mt-2">
+                    <div class="flex space-x-8 text-slate-400 mt-2">
                         <p>μ<sub>1,1</sub> = μ + α<sub>1</sub> + β<sub>1</sub>, ..., μ<sub>1,<?php echo $is; ?></sub> = μ + α<sub>1</sub> + β<sub><?php echo $is; ?></sub></p>
                         <p>...</p>
                         <p>μ<sub><?php echo $ir; ?>,1</sub> = μ + α<sub><?php echo $ir; ?></sub> + β<sub>1</sub>, ..., μ<sub><?php echo $ir; ?>,<?php echo $is; ?></sub> = μ + α<sub><?php echo $ir; ?></sub> + β<sub><?php echo $is; ?></sub></p>
@@ -564,7 +564,7 @@ case 2:
                     <p class="text-slate-400 text-sm">H<sub>0</sub>: β<sub>1</sub> = ... = β<sub><?php echo $is; ?></sub> = 0</p>
                 </div>
 
-                <button type="submit" class="btn-primary">Perform the test</button>
+                <button type="submit" class="btn-primary">Run the test</button>
                 <input type="hidden" name="a" value="2">
             </form>
 
@@ -749,12 +749,16 @@ case 2:
                             }
                         }
                     ?>a=1" class="link-button">Two-way ANOVA with interactions</a>
-                    <form method="get" class="inline-block">
-                        <button type="submit" class="btn-secondary">New entry</button>
-                        <input type="hidden" name="a" value="0">
-                    </form>
                 </div>
             </div>
+        </div>
+
+        <!-- New Entry Button -->
+        <div class="glass-card rounded-2xl p-6 text-center">
+            <form method="get">
+                <button type="submit" class="btn-primary">🔄 New entry</button>
+                <input type="hidden" name="a" value="0">
+            </form>
         </div>
 
 <?php

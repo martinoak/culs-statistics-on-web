@@ -394,7 +394,7 @@ case 1:
                     <p class="text-slate-400 text-sm">H<sub>0</sub>: γ<sub>1,1</sub> = ... = γ<sub><?php echo $ir; ?>,<?php echo $is; ?></sub> = 0</p>
                 </div>
 
-                <button type="submit" class="btn-primary">Perform the test</button>
+                <button type="submit" class="btn-primary">Run the test</button>
                 <input type="hidden" name="a" value="2">
             </form>
         </div>
@@ -582,7 +582,7 @@ case 2:
                     </table>
                 </div>
 
-                <button type="submit" class="btn-primary">Perform the test</button>
+                <button type="submit" class="btn-primary">Run the test</button>
                 <input type="hidden" name="a" value="2">
             </form>
 
@@ -725,12 +725,16 @@ case 2:
                             }
                         }
                     ?>a=1" class="link-button">Two-way ANOVA without interactions</a>
-                    <form method="get" class="inline-block">
-                        <button type="submit" class="btn-secondary">New entry</button>
-                        <input type="hidden" name="a" value="0">
-                    </form>
                 </div>
             </div>
+        </div>
+
+        <!-- New Entry Button -->
+        <div class="glass-card rounded-2xl p-6 text-center">
+            <form method="get">
+                <button type="submit" class="btn-primary">🔄 New entry</button>
+                <input type="hidden" name="a" value="0">
+            </form>
         </div>
 
 <?php

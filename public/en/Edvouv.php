@@ -409,7 +409,7 @@ switch ($a):
                 </div>
 
                 <div>
-                    <button type="submit" class="btn-primary">Perform the test</button>
+                    <button type="submit" class="btn-primary">Run the test</button>
                 </div>
                 <input type="hidden" name="a" value="2">
             </form>
@@ -521,7 +521,7 @@ switch ($a):
                 </div>
 
                 <div>
-                    <button type="submit" class="btn-primary">Perform the test</button>
+                    <button type="submit" class="btn-primary">Run the test</button>
                 </div>
                 <input type="hidden" name="a" value="2">
             </form>
